@@ -43,32 +43,6 @@ export const PortfolioMarquee: React.FC<PortfolioMarqueeProps> = ({
         {/* Right Side Interactive Marquee Controls */}
         <div className="flex items-center gap-3">
           {/* Pause / Play Toggle */}
-          <button
-            onClick={() => setIsPaused(!isPaused)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 hover:bg-white text-[#292724] text-[10px] uppercase tracking-[0.2em] font-medium border border-white/80 shadow-xs transition-all cursor-pointer"
-            aria-label={isPaused ? "Resume marquee scroll" : "Pause marquee scroll"}
-          >
-            {isPaused ? (
-              <>
-                <Play className="w-3 h-3 text-[#8D7163] fill-current" />
-                <span>Resume Feed</span>
-              </>
-            ) : (
-              <>
-                <Pause className="w-3 h-3 text-[#8D7163]" />
-                <span>Pause Feed</span>
-              </>
-            )}
-          </button>
-
-          {/* Speed Toggle */}
-          <button
-            onClick={() => setIsSlowSpeed(!isSlowSpeed)}
-            className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-white/70 hover:bg-white text-[#292724] text-[10px] uppercase tracking-[0.2em] font-medium border border-white/80 shadow-xs transition-all cursor-pointer"
-            aria-label="Toggle marquee speed"
-          >
-            <span>Speed: {isSlowSpeed ? 'Slow' : 'Normal'}</span>
-          </button>
 
           {/* Manual Left/Right Chevrons */}
           <div className="flex items-center gap-1">
@@ -130,7 +104,7 @@ export const PortfolioMarquee: React.FC<PortfolioMarqueeProps> = ({
       {/* Bottom Hint Indicator */}
       <div className="text-center pt-3">
         <span className="text-[10px] text-[#8D7163]/80 uppercase tracking-[0.25em] font-light">
-          Hover over any collage to pause · Click photograph to view in high resolution
+          Click any photograph to view in high resolution
         </span>
       </div>
 

@@ -115,9 +115,6 @@ export default function App() {
         style={{ scaleX }}
       />
 
-      {/* 1. Thin Announcement Bar */}
-      <AnnouncementBar onBookClick={() => scrollToContact()} />
-
       {/* 2. Navigation Header */}
       <Header 
         currentPage={currentPage}
@@ -208,6 +205,9 @@ export default function App() {
 
       {/* Footer */}
       <Footer onNavigate={navigateTo} />
+
+      {/* Startup Announcement Overlay */}
+      <AnnouncementBar onBookClick={() => scrollToContact()} />
 
       {/* Floating Animated Back to Top Glass Pill */}
       <AnimatePresence>

@@ -9,10 +9,32 @@
     --color-charcoal: #292724;
   }
 
+  /* Desktop font scale boost — increases all rem-based text ~12.5% on lg screens */
+  @media (min-width: 1024px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    html {
+      font-size: 19px;
+    }
+  }
+
   body {
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     color: #292724;
     background-color: #F8F6F1;
+  }
+
+  /* Hide page scrollbar — top progress bar is the only scroll indicator */
+  html {
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -162,10 +184,6 @@
   width: max-content;
   animation: marqueeScrollLeft 65s linear infinite;
   will-change: transform;
-}
-
-.animate-marquee-portfolio:hover {
-  animation-play-state: paused;
 }
 
 .animate-marquee-slow {

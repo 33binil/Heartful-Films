@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, ArrowRight, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 interface AnnouncementBarProps {
   onBookClick?: () => void;
@@ -8,41 +9,86 @@ interface AnnouncementBarProps {
 export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({ onBookClick }) => {
   const [isVisible, setIsVisible] = useState(true);
 
-  if (!isVisible) return null;
+  useEffect(() => {
+    if (isVisible) {
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = '';
+      };
+    }
+  }, [isVisible]);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsVisible(false);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, []);
 
   return (
-    <aside 
-      aria-label="Booking announcement" 
-      className="bg-[#EDE3D8]/80 backdrop-blur-md text-[#292724] border-b border-[#D8C8B8]/50 py-2.5 px-4 transition-all duration-300 relative z-50 shadow-xs"
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between text-[11px] tracking-[0.25em] uppercase font-medium">
-        <div className="w-6 hidden md:block" />
-        
-        <div className="flex-1 text-center flex items-center justify-center gap-2 flex-wrap">
-          <span className="opacity-90">NOW BOOKING — WEDDINGS, EVENTS & CREATIVE PROJECTS</span>
-          <a
-            href="#contact"
-            onClick={(e) => {
-              if (onBookClick) {
-                e.preventDefault();
-                onBookClick();
-              }
-            }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 bg-white/50 hover:bg-white/80 backdrop-blur-xs border border-white/60 rounded-full transition-all duration-300 text-[10px] tracking-widest text-[#292724] font-semibold ml-2 shadow-xs transform hover:-translate-y-0.5"
-          >
-            <span>Inquire Now</span>
-            <ArrowRight className="w-3 h-3 text-[#8D7163]" />
-          </a>
-        </div>
-
-        <button 
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          key="announcement-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-5 sm:p-8 bg-[#292724]/45 backdrop-blur-md"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Booking announcement"
           onClick={() => setIsVisible(false)}
-          className="text-[#8D7163] hover:text-[#292724] p-1.5 hover:bg-white/40 rounded-full transition-all ml-2 focus:outline-none focus:ring-1 focus:ring-[#8D7163]"
-          aria-label="Dismiss announcement"
         >
-          <X className="w-3.5 h-3.5" />
-        </button>
-      </div>
-    </aside>
+          <motion.aside
+            initial={{ opacity: 0, y: 28, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.97 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-lg bg-[#F8F6F1] border border-[#D8C8B8]/70 rounded-2xl shadow-[0_24px_60px_rgba(41,39,36,0.28)] px-7 sm:px-10 py-10 sm:py-12 text-center"
+          >
+            <button
+              onClick={() => setIsVisible(false)}
+              className="absolute top-4 right-4 text-[#8D7163] hover:text-[#292724] p-2 hover:bg-[#EDE3D8]/70 rounded-full transition-all focus:outline-none focus:ring-1 focus:ring-[#8D7163]"
+              aria-label="Dismiss announcement"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <span className="inline-flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase font-semibold text-[#8D7163] bg-[#EDE3D8]/70 border border-[#D8C8B8]/60 rounded-full px-4 py-1.5 mb-6">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Announcement</span>
+            </span>
+
+            <h2 className="font-editorial text-2xl sm:text-3xl uppercase text-[#292724] font-light leading-snug mb-4">
+              Now Booking
+            </h2>
+
+            <p className="text-[11px] tracking-[0.25em] uppercase text-[#8D7163] font-medium mb-7">
+              Weddings, Events &amp; Creative Projects
+            </p>
+
+            <p className="font-editorial italic text-base text-[#292724]/75 mb-8 max-w-sm mx-auto">
+              Let's collaborate to capture the stillness, laughter, and celebration of your special day.
+            </p>
+
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsVisible(false);
+                onBookClick?.();
+              }}
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#292724] text-white hover:bg-[#8D7163] rounded-full text-xs uppercase tracking-[0.25em] font-medium transition-all duration-300 shadow-sm cursor-pointer transform hover:-translate-y-0.5"
+            >
+              <span>Inquire Now</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </motion.aside>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };

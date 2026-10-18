@@ -62,34 +62,6 @@ export const PortfolioSection: React.FC = () => {
             Real moments. Honest emotions. Asymmetrical visual narratives worth revisiting.
           </p>
         </motion.div>
-
-        {/* View Mode Switcher Pill */}
-        <div className="flex items-center justify-center gap-3 mb-12">
-          <div className="p-1 rounded-full bg-white/60 backdrop-blur-md border border-white/80 shadow-xs flex items-center gap-1">
-            <button
-              onClick={() => setActiveView('marquee')}
-              className={`px-4 sm:px-5 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
-                activeView === 'marquee'
-                  ? 'bg-[#292724] text-white shadow-xs'
-                  : 'text-[#292724] hover:text-[#8D7163]'
-              }`}
-            >
-              <FilmIcon className="w-3.5 h-3.5" />
-              <span>Editorial Marquee (5 Sets)</span>
-            </button>
-            <button
-              onClick={() => setActiveView('grid')}
-              className={`px-4 sm:px-5 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] font-medium transition-all duration-300 cursor-pointer flex items-center gap-1.5 ${
-                activeView === 'grid'
-                  ? 'bg-[#292724] text-white shadow-xs'
-                  : 'text-[#292724] hover:text-[#8D7163]'
-              }`}
-            >
-              <LayoutGrid className="w-3.5 h-3.5" />
-              <span>Archive Grid</span>
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* VIEW 1: Flagship Asymmetrical Collage Horizontal Marquee (Exact Reference Design) */}

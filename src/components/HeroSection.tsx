@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowDown, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
+import heroVideo from '../assets/video/HeartFul-Films-Optimized-v5.mp4';
 
 interface HeroSectionProps {
   onExploreClick?: () => void;
@@ -12,18 +13,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onCreateClick
 }) => {
   return (
-    <section className="relative w-full h-[90vh] min-h-[600px] max-h-[920px] overflow-hidden flex items-center justify-center bg-[#292724]">
-      {/* High-Fidelity Cinematic Background with Gentle Ken Burns Drift */}
-      <motion.img
-        src="/src/assets/images/hero_cinematic_couple_1792326980733.jpg"
-        alt="Couple standing on golden hillside at sunset captured by Heartful Films"
-        className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.02]"
-        referrerPolicy="no-referrer"
-        loading="eager"
-        initial={{ scale: 1.08 }}
-        animate={{ scale: 1.01 }}
-        transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
-      />
+    <section className="relative w-full h-screen min-h-[600px] -mt-[76px] pt-[76px] overflow-hidden flex items-center justify-center bg-[#292724]">
+      {/* High-Fidelity Cinematic Background — Local Auto-playing Looping Video */}
+      <div className="absolute inset-0 overflow-hidden bg-[#292724]">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1.01 }}
+          transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <video
+            src={heroVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            disablePictureInPicture
+            aria-label="Heartful Films cinematic showreel"
+            className="absolute inset-0 w-full h-full object-cover object-center brightness-[0.92] contrast-[1.02]"
+          />
+        </motion.div>
+      </div>
 
       {/* Measured Editorial Scrim Overlays */}
       <div 

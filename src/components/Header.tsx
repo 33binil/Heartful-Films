@@ -51,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header 
-      className={`sticky top-0 z-40 w-full transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isScrolled 
           ? 'bg-white/85 backdrop-blur-md shadow-[0_4px_20px_rgba(41,39,36,0.04)] border-b border-white/50' 
           : 'bg-white/90 backdrop-blur-sm border-b border-[#EDE3D8]/70'
@@ -123,13 +123,20 @@ export const Header: React.FC<HeaderProps> = ({
             <a 
               href="#"
               onClick={(e) => handleLinkClick(e, 'home')}
-              className="flex flex-col cursor-pointer"
+              className="flex items-center gap-2.5 cursor-pointer"
             >
-              <span className="font-editorial text-2xl tracking-[0.18em] uppercase text-[#292724] font-light leading-tight">
-                Heartful
-              </span>
-              <span className="text-[9px] tracking-[0.35em] uppercase text-[#8D7163] font-medium -mt-0.5">
-                Films
+              <img
+                src="/src/assets/images/logo.jpg"
+                alt="Heartful Films logo"
+                className="w-9 h-9 rounded-full object-cover border border-[#EDE3D8] shadow-xs"
+              />
+              <span className="flex flex-col">
+                <span className="font-editorial text-2xl tracking-[0.18em] uppercase text-[#292724] font-light leading-tight">
+                  Heartful
+                </span>
+                <span className="text-[9px] tracking-[0.35em] uppercase text-[#8D7163] font-medium -mt-0.5">
+                  Films
+                </span>
               </span>
             </a>
 
@@ -169,11 +176,6 @@ export const Header: React.FC<HeaderProps> = ({
               </svg>
             </div>
 
-            {/* Background Vertical Botanical Rose Sketch with Subtle Breathing Hover */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-45 group-hover:opacity-65 transition-opacity duration-500 overflow-hidden">
-              <VerticalRoseEmblem className="w-20 h-28 text-[#8D7163] group-hover:scale-105 transition-transform duration-500" />
-            </div>
-
             {/* Foreground Brand Name on the Round Badge */}
             <a 
               href="#" 
@@ -181,12 +183,14 @@ export const Header: React.FC<HeaderProps> = ({
               className="relative z-10 flex flex-col items-center justify-center text-center focus:outline-none cursor-pointer"
               aria-label="Heartful Films Home"
             >
-              <span className="font-editorial text-2xl lg:text-[28px] tracking-[0.24em] text-[#292724] uppercase font-light leading-none group-hover:text-[#8D7163] transition-colors">
-                Heartful
+              <span className="font-editorial text-xl lg:text-[18px] tracking-[0.24em] text-[#292724] uppercase font-light leading-none group-hover:text-[#8D7163] transition-colors mb-2">
+                Heartful Films
               </span>
-              <span className="text-[9px] lg:text-[10px] tracking-[0.42em] uppercase text-[#8D7163] font-medium mt-1.5 leading-none">
-                Films
-              </span>
+              <img
+                src="/src/assets/images/logo.jpg"
+                alt="Heartful Films logo"
+                className="w-11 h-11 lg:w-12 lg:h-12 rounded-full object-cover border border-[#EDE3D8] shadow-xs mb-1.5"
+              />
             </a>
 
           </motion.div>
