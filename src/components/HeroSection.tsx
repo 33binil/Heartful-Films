@@ -50,7 +50,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     }
   }, [isMobile]);
   return (
-    <section className="relative w-full h-screen min-h-[600px] -mt-[76px] pt-[76px] overflow-hidden flex items-center justify-center bg-[#292724]">
+    <section
+      className="hero-viewport relative w-full min-h-[600px] -mt-[76px] pt-[76px] overflow-hidden flex items-center justify-center bg-[#292724]"
+      aria-label="Hero"
+    >
       {/* High-Fidelity Cinematic Background — Local Auto-playing Looping Video */}
       <div className="absolute inset-0 overflow-hidden bg-[#292724]">
         <motion.div
@@ -69,7 +72,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             preload="metadata"
             disablePictureInPicture
             aria-label="Heartful Films cinematic showreel"
-            className="absolute inset-0 w-full h-full object-cover object-center brightness-[0.92] contrast-[1.02]"
+            className="absolute inset-0 w-full h-full object-cover object-center brightness-[0.92] contrast-[1.02] block"
             onError={(e) => {
               const video = e.currentTarget;
               if (video.src !== heroVideoDesktop) {

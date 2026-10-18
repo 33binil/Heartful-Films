@@ -216,3 +216,21 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #8D7163;
 }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero viewport height: fill the largest possible viewport so no page
+   background is exposed below the hero when mobile browser UI resizes
+   (some mobile browsers resolve 100vh to the smallest viewport). */
+.hero-viewport {
+  height: 100vh;
+}
+
+@supports (height: 100lvh) {
+  .hero-viewport {
+    height: 100lvh;
+  }
+}
