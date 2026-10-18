@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Sparkles } from 'lucide-react';
+import bouquetImage from '../assets/images/about_bouquet_detail_1792326982071.jpg';
+import coupleImage from '../assets/images/mission_couple_intimate_1792327002399.jpg';
 
 export const MissionSection: React.FC = () => {
   return (
@@ -12,7 +14,7 @@ export const MissionSection: React.FC = () => {
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
-          src="/src/assets/images/about_bouquet_detail_1792326982071.jpg"
+          src={bouquetImage}
           alt="Heartful Films artistic atmosphere"
           className="w-full h-full object-cover filter brightness-[0.92] saturate-[0.8] blur-[2px]"
           loading="lazy"
@@ -85,7 +87,7 @@ export const MissionSection: React.FC = () => {
               <motion.img
                 whileHover={{ scale: 1.08 }}
                 transition={{ duration: 0.6 }}
-                src="/src/assets/images/mission_couple_intimate_1792327002399.jpg"
+                src={coupleImage}
                 alt="Intimate couple portrait detail"
                 className="w-full h-full object-cover"
                 loading="lazy"

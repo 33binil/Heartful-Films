@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { VerticalRoseEmblem } from './FloralIcons';
+import logoImage from '../assets/images/logo.jpg';
 
 interface HeaderProps {
   currentPage?: 'home' | 'blog';
@@ -126,7 +127,7 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center gap-2.5 cursor-pointer"
             >
               <img
-                src="/src/assets/images/logo.jpg"
+                src={logoImage}
                 alt="Heartful Films logo"
                 className="w-9 h-9 rounded-full object-cover border border-[#EDE3D8] shadow-xs"
               />
@@ -187,7 +188,7 @@ export const Header: React.FC<HeaderProps> = ({
                 Heartful Films
               </span>
               <img
-                src="/src/assets/images/logo.jpg"
+                src={logoImage}
                 alt="Heartful Films logo"
                 className="w-11 h-11 lg:w-12 lg:h-12 rounded-full object-cover border border-[#EDE3D8] shadow-xs mb-1.5"
               />

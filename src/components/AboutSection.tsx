@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { BotanicalFlourish } from './FloralIcons';
+import bouquetImage from '../assets/images/about_bouquet_detail_1792326982071.jpg';
+import brideImage from '../assets/images/about_editorial_bride_1792326982445.jpg';
 
 interface AboutSectionProps {
   onLearnMoreClick?: () => void;
@@ -98,7 +100,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMoreClick }) 
               >
                 <div className="relative aspect-square overflow-hidden bg-[#EDE3D8] border border-white/80 rounded-xs group">
                   <img
-                    src="/src/assets/images/about_bouquet_detail_1792326982071.jpg"
+                    src={bouquetImage}
                     alt="Fine art wedding botanical detail and rings"
                     className="w-full h-full object-cover filter contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-106"
                     loading="lazy"
@@ -126,7 +128,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMoreClick }) 
               >
                 <div className="relative aspect-3/4 overflow-hidden bg-[#EDE3D8] border border-white/80 rounded-xs">
                   <img
-                    src="/src/assets/images/about_editorial_bride_1792326982445.jpg"
+                    src={brideImage}
                     alt="Editorial bridal portrait with vintage lace dress"
                     className="w-full h-full object-cover"
                     loading="lazy"

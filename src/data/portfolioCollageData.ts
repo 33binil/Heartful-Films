@@ -1,3 +1,18 @@
+import porchBench from '../assets/images/collage_porch_bench_1792329769670.jpg';
+import brideEditorial from '../assets/images/about_editorial_bride_1792326982445.jpg';
+import weddingArch from '../assets/images/collage_wedding_arch_1792329749561.jpg';
+import preweddingVintage from '../assets/images/collage_prewedding_vintage_1792329768764.jpg';
+import heroCouple from '../assets/images/hero_cinematic_couple_1792326980733.jpg';
+import missionCouple from '../assets/images/mission_couple_intimate_1792327002399.jpg';
+import eventsCelebration from '../assets/images/collage_events_celebration_1792329769600.jpg';
+import portfolioEventReception from '../assets/images/portfolio_event_reception_1792327003671.jpg';
+import blogChurchCeremony from '../assets/images/blog_church_ceremony_1792327922746.jpg';
+import servicesCommercial from '../assets/images/services_commercial_brand_1792326982776.jpg';
+import brandCinematicRig from '../assets/images/collage_brand_cinematic_rig_1792329829912.jpg';
+import servicesDance from '../assets/images/services_dance_stage_1792326982367.jpg';
+import danceDuo from '../assets/images/collage_dance_duo_1792329830526.jpg';
+import danceStageArch from '../assets/images/collage_dance_stage_arch_1792329770389.jpg';
+
 export interface PortfolioCollageImage {
   id: string;
   src: string;
@@ -25,7 +40,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
     images: [
       {
         id: 'w-1',
-        src: '/src/assets/images/collage_porch_bench_1792329769670.jpg',
+        src: porchBench,
         alt: 'Bride and groom sitting close on sunlit veranda bench',
         caption: 'Cotswold Veranda',
         objectPosition: 'center 35%',
@@ -34,7 +49,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'w-2',
-        src: '/src/assets/images/about_editorial_bride_1792326982445.jpg',
+        src: brideEditorial,
         alt: 'Fine art bridal lace portrait with natural window lighting',
         caption: 'Morning Light',
         objectPosition: 'center 30%',
@@ -43,7 +58,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'w-3',
-        src: '/src/assets/images/collage_wedding_arch_1792329749561.jpg',
+        src: weddingArch,
         alt: 'Bride and groom framed by natural stone arch overlooking mountain peaks',
         caption: 'Alpine Archway',
         objectPosition: 'center 30%',
@@ -60,7 +75,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
     images: [
       {
         id: 'pw-1',
-        src: '/src/assets/images/collage_prewedding_vintage_1792329768764.jpg',
+        src: preweddingVintage,
         alt: 'Couple leaning on vintage motorcycle with vibrant wildflower bouquet',
         caption: 'Wildflowers & Highway',
         objectPosition: 'center 35%',
@@ -69,7 +84,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'pw-2',
-        src: '/src/assets/images/hero_cinematic_couple_1792326980733.jpg',
+        src: heroCouple,
         alt: 'Couple standing atop golden sunset ridge with floating veil',
         caption: 'Golden Hour Peak',
         objectPosition: 'center 30%',
@@ -78,7 +93,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'pw-3',
-        src: '/src/assets/images/mission_couple_intimate_1792327002399.jpg',
+        src: missionCouple,
         alt: 'Intimate embrace portrait at dusk in wild grass',
         caption: 'Embrace in the Wild Grass',
         objectPosition: 'center 30%',
@@ -95,7 +110,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
     images: [
       {
         id: 'ev-1',
-        src: '/src/assets/images/collage_events_celebration_1792329769600.jpg',
+        src: eventsCelebration,
         alt: 'Atmospheric candlelit evening banquet with guests toasting champagne',
         caption: 'Tuscan Olive Grove Toast',
         objectPosition: 'center 45%',
@@ -104,7 +119,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'ev-2',
-        src: '/src/assets/images/portfolio_event_reception_1792327003671.jpg',
+        src: portfolioEventReception,
         alt: 'Twilight dinner laughter and wine glasses',
         caption: 'Candlelit Reverie',
         objectPosition: 'center 30%',
@@ -113,7 +128,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'ev-3',
-        src: '/src/assets/images/blog_church_ceremony_1792327922746.jpg',
+        src: blogChurchCeremony,
         alt: 'Cathedral hall ceremony gathering',
         caption: 'Historic Chancel',
         objectPosition: 'center 35%',
@@ -130,7 +145,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
     images: [
       {
         id: 'ad-1',
-        src: '/src/assets/images/services_commercial_brand_1792326982776.jpg',
+        src: servicesCommercial,
         alt: 'Creative director monitoring commercial shot on monitor',
         caption: 'Director Monitor & Framing',
         objectPosition: 'center 40%',
@@ -139,7 +154,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'ad-2',
-        src: '/src/assets/images/collage_brand_cinematic_rig_1792329829912.jpg',
+        src: brandCinematicRig,
         alt: 'Director with professional cinema camera rig filming model in warehouse studio',
         caption: 'Studio Silk Campaign',
         objectPosition: 'center 30%',
@@ -148,7 +163,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'ad-3',
-        src: '/src/assets/images/collage_wedding_arch_1792329749561.jpg',
+        src: weddingArch,
         alt: 'Architectural stone arch framing',
         caption: 'Alpine Location Scouting',
         objectPosition: 'center 30%',
@@ -165,7 +180,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
     images: [
       {
         id: 'dp-1',
-        src: '/src/assets/images/services_dance_stage_1792326982367.jpg',
+        src: servicesDance,
         alt: 'Stage performance lighting and dramatic haze',
         caption: 'Proscenium Atmosphere',
         objectPosition: 'center 35%',
@@ -174,7 +189,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'dp-2',
-        src: '/src/assets/images/collage_dance_duo_1792329830526.jpg',
+        src: danceDuo,
         alt: 'Contemporary dance duo suspended mid-air in theatrical light',
         caption: 'Synchronized Gravity',
         objectPosition: 'center 40%',
@@ -183,7 +198,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'dp-3',
-        src: '/src/assets/images/collage_dance_stage_arch_1792329770389.jpg',
+        src: danceStageArch,
         alt: 'Solo expressive dancer in amber fabric under dramatic warm spotlight',
         caption: 'Amber Flight in the Mist',
         objectPosition: 'center 30%',

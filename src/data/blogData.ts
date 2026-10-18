@@ -1,3 +1,11 @@
+import blogTraditionalWedding from '../assets/images/blog_traditional_wedding_1792327923485.jpg';
+import bouquetDetail from '../assets/images/about_bouquet_detail_1792326982071.jpg';
+import heroCouple from '../assets/images/hero_cinematic_couple_1792326980733.jpg';
+import blogChurchCeremony from '../assets/images/blog_church_ceremony_1792327922746.jpg';
+import brideEditorial from '../assets/images/about_editorial_bride_1792326982445.jpg';
+import missionCouple from '../assets/images/mission_couple_intimate_1792327002399.jpg';
+import portfolioEventReception from '../assets/images/portfolio_event_reception_1792327003671.jpg';
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -24,11 +32,11 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Traditional Weddings",
     date: "October 2025",
     readTime: "4 min read",
-    image: "/src/assets/images/blog_traditional_wedding_1792327923485.jpg",
+    image: "blogTraditionalWedding",
     galleryImages: [
-      "/src/assets/images/blog_traditional_wedding_1792327923485.jpg",
-      "/src/assets/images/about_bouquet_detail_1792326982071.jpg",
-      "/src/assets/images/hero_cinematic_couple_1792326980733.jpg"
+      "blogTraditionalWedding",
+      "bouquetDetail",
+      "heroCouple"
     ],
     location: "Kunnathur Heritage Estate",
     excerpt: "There is a quiet majesty when the sacred fire is lit. Between Abhishek and Saloni's vows beneath garlands of jasmine and red roses, every glance held generations of family warmth and unscripted laughter...",
@@ -48,11 +56,11 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Church Weddings",
     date: "September 2025",
     readTime: "5 min read",
-    image: "/src/assets/images/blog_church_ceremony_1792327922746.jpg",
+    image: "blogChurchCeremony",
     galleryImages: [
-      "/src/assets/images/blog_church_ceremony_1792327922746.jpg",
-      "/src/assets/images/about_editorial_bride_1792326982445.jpg",
-      "/src/assets/images/about_bouquet_detail_1792326982071.jpg"
+      "blogChurchCeremony",
+      "brideEditorial",
+      "bouquetDetail"
     ],
     location: "St. Mary's Cathedral & The Cloisters",
     excerpt: "Aju and Taniya's wedding was elegant in the way that only very simple things can be: a church, an antique lace veil, and a family that showed up in full presence to witness a lifelong promise...",
@@ -72,10 +80,10 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Elopements",
     date: "August 2025",
     readTime: "4 min read",
-    image: "/src/assets/images/hero_cinematic_couple_1792326980733.jpg",
+    image: "heroCouple",
     galleryImages: [
-      "/src/assets/images/hero_cinematic_couple_1792326980733.jpg",
-      "/src/assets/images/mission_couple_intimate_1792327002399.jpg"
+      "heroCouple",
+      "missionCouple"
     ],
     location: "Southern Highland Ridge",
     excerpt: "The wind carried the scent of wild mountain thyme. Clara and Julian chose to exchange their vows overlooking a vast alpine valley as the setting sun cast long amber shadows across the hills...",
@@ -95,10 +103,10 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Cross-Cultural",
     date: "July 2025",
     readTime: "6 min read",
-    image: "/src/assets/images/mission_couple_intimate_1792327002399.jpg",
+    image: "missionCouple",
     galleryImages: [
-      "/src/assets/images/mission_couple_intimate_1792327002399.jpg",
-      "/src/assets/images/portfolio_event_reception_1792327003671.jpg"
+      "missionCouple",
+      "portfolioEventReception"
     ],
     location: "Cotswold Hills & Heritage Manor",
     excerpt: "Every love story possesses a unique architecture, but for Krishna and Connor, it was a beautiful bridge spanning across cultures and continents, celebrated with laughter under ancient trees...",
@@ -118,10 +126,10 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Events & Dinners",
     date: "June 2025",
     readTime: "3 min read",
-    image: "/src/assets/images/portfolio_event_reception_1792327003671.jpg",
+    image: "portfolioEventReception",
     galleryImages: [
-      "/src/assets/images/portfolio_event_reception_1792327003671.jpg",
-      "/src/assets/images/about_bouquet_detail_1792326982071.jpg"
+      "portfolioEventReception",
+      "bouquetDetail"
     ],
     location: "Villa Bellafiore, Florence",
     excerpt: "An open-air evening feast celebrating a quarter-century of friendship and heritage. Unrehearsed laughter, candle wax dripping on linen, and glasses raised high under fairy lights...",
