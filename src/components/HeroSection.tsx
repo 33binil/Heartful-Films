@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ArrowDown, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
-import heroVideo from '../assets/video/HeartFul-Films-Optimized-v5.mp4';
+import heroVideoDesktop from '../assets/video/HeartFul-Films-Optimized-v1.mp4';
+import heroVideoMobile from '../assets/video/HeartFul-Films-mobile-Optimized-v1.mp4';
 
 interface HeroSectionProps {
   onExploreClick?: () => void;
@@ -12,6 +13,42 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onExploreClick,
   onCreateClick
 }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.innerWidth < 768;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const source = isMobile ? heroVideoMobile : heroVideoDesktop;
+    if (video.src !== source) {
+      const currentTime = video.currentTime;
+      video.src = source;
+      video.load();
+      const playAfterLoad = () => {
+        video.currentTime = currentTime;
+        video.play().catch(() => {
+          // Ignore autoplay errors (e.g. policy changes) but keep video loaded
+        });
+      };
+      video.addEventListener('loadedmetadata', playAfterLoad, { once: true });
+      return () => {
+        video.removeEventListener('loadedmetadata', playAfterLoad);
+      };
+    }
+  }, [isMobile]);
   return (
     <section className="relative w-full h-screen min-h-[600px] -mt-[76px] pt-[76px] overflow-hidden flex items-center justify-center bg-[#292724]">
       {/* High-Fidelity Cinematic Background — Local Auto-playing Looping Video */}
@@ -23,7 +60,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
         >
           <video
-            src={heroVideo}
+            ref={videoRef}
+            src={isMobile ? heroVideoMobile : heroVideoDesktop}
             autoPlay
             loop
             muted
@@ -32,6 +70,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             disablePictureInPicture
             aria-label="Heartful Films cinematic showreel"
             className="absolute inset-0 w-full h-full object-cover object-center brightness-[0.92] contrast-[1.02]"
+            onError={(e) => {
+              const video = e.currentTarget;
+              if (video.src !== heroVideoDesktop) {
+                video.src = heroVideoDesktop;
+                video.load();
+                video.play().catch(() => {});
+              }
+            }}
           />
         </motion.div>
       </div>

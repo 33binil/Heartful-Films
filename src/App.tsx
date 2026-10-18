@@ -31,6 +31,16 @@ export default function App() {
     restDelta: 0.001
   });
 
+  // Ensure page always starts at top on refresh/reload; cleanup restore
+  useEffect(() => {
+    const previous = history.scrollRestoration;
+    history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    return () => {
+      history.scrollRestoration = previous;
+    };
+  }, []);
+
   // Sync state with URL hash
   useEffect(() => {
     const handleHash = () => {
@@ -205,9 +215,6 @@ export default function App() {
 
       {/* Footer */}
       <Footer onNavigate={navigateTo} />
-
-      {/* Startup Announcement Overlay */}
-      <AnnouncementBar onBookClick={() => scrollToContact()} />
 
       {/* Floating Animated Back to Top Glass Pill */}
       <AnimatePresence>
