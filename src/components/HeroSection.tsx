@@ -18,6 +18,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     if (typeof window === 'undefined') return false;
     return window.innerWidth < 768;
   });
+  const [showScrollCue, setShowScrollCue] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollCue(window.scrollY < window.innerHeight * 0.6);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -166,20 +176,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </a>
       </motion.div>
 
-      {/* Down indicator with glass disc — floating overlay on the bottom-right */}
-      <motion.a 
-        href="#intro" 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.9 }}
-        className="absolute bottom-6 right-6 sm:right-10 xl:right-16 z-20 text-white/80 hover:text-white transition-all flex flex-col items-center gap-2 focus:outline-none group cursor-pointer"
-        aria-label="Scroll to introduction"
+      {/* Down indicator with glass disc — floating overlay on the screen */}
+      <div
+        className={`fixed bottom-6 right-6 sm:right-10 xl:right-16 z-30 transition-opacity duration-500 ${
+          showScrollCue ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
       >
-        <span className="text-[9px] uppercase tracking-[0.3em] font-light opacity-80 group-hover:opacity-100">Scroll</span>
-        <div className="w-8 h-8 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-xs group-hover:bg-white/25 transition-all">
-          <ArrowDown className="w-3.5 h-3.5 animate-bounce text-white" />
-        </div>
-      </motion.a>
+        <motion.a 
+          href="#intro" 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.9 }}
+          className="text-white/80 hover:text-white transition-all flex flex-col items-center gap-2 focus:outline-none group cursor-pointer drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]"
+          aria-label="Scroll to introduction"
+        >
+          <span className="text-[9px] uppercase tracking-[0.3em] font-light opacity-80 group-hover:opacity-100">Scroll</span>
+          <div className="w-8 h-8 rounded-full bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center shadow-xs group-hover:bg-white/25 transition-all">
+            <ArrowDown className="w-3.5 h-3.5 animate-bounce text-white" />
+          </div>
+        </motion.a>
+      </div>
     </section>
   );
 };

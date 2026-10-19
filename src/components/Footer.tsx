@@ -1,7 +1,7 @@
 import React from 'react';
 import { Instagram, ArrowUp, Mail, Phone, MapPin } from 'lucide-react';
 import { BRAND_INFO } from '../data/content';
-import { FloralEmblem } from './FloralIcons';
+import logoImage from '../assets/images/logo.jpg';
 
 interface FooterProps {
   onNavigate?: (page: 'home' | 'blog', sectionId?: string) => void;
@@ -44,8 +44,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Brand Column (5 cols) */}
           <div className="md:col-span-5 flex flex-col items-start">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center bg-white/10 backdrop-blur-md shadow-xs">
-                <FloralEmblem className="w-5 h-5 text-[#D8C8B8]" />
+              <div className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center bg-white/10 backdrop-blur-md shadow-xs overflow-hidden">
+                <img
+                  src={logoImage}
+                  alt="Heartful Films logo"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="font-editorial text-2xl lg:text-3xl tracking-[0.16em] uppercase font-light text-white">
                 Heartful Films
@@ -168,14 +174,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             >
               Follow @_heartful___
             </a>
-            <span className="text-white/20">|</span>
-            <button
-              onClick={scrollToTop}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 hover:bg-white/15 backdrop-blur-md border border-white/10 hover:text-white transition-all focus:outline-none"
-            >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
           </div>
         </div>
 
