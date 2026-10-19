@@ -3,7 +3,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Eye, Film, Play, LayoutGrid, Film as FilmIcon } from 'lucide-react';
 import { PORTFOLIO_DATA, PortfolioItem } from '../data/content';
 import { PORTFOLIO_COLLAGE_SETS, PortfolioCollageImage } from '../data/portfolioCollageData';
+import { portfolioAdsData } from '../data/portfolioAdsData';
 import { PortfolioMarquee } from './PortfolioMarquee';
+import { PortfolioAdsCarousel } from './PortfolioAdsCarousel';
 import { MediaLightbox } from './MediaLightbox';
 
 type CategoryFilter = 'All' | 'Weddings' | 'Events' | 'Ads & Brands' | 'Dance Programs';
@@ -195,6 +197,11 @@ export const PortfolioSection: React.FC = () => {
             </AnimatePresence>
           </div>
         </motion.div>
+      )}
+
+      {/* VIEW 3: Ads & Commercial Films (data-driven, hidden while empty) */}
+      {portfolioAdsData.length > 0 && (
+        <PortfolioAdsCarousel ads={portfolioAdsData} />
       )}
 
       {/* Lightbox Modal */}

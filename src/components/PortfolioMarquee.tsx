@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { Pause, Play, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { PortfolioCollageSet, PortfolioCollageImage } from '../data/portfolioCollageData';
 import { PortfolioCollage } from './PortfolioCollage';
 
@@ -12,9 +12,34 @@ export const PortfolioMarquee: React.FC<PortfolioMarqueeProps> = ({
   sets,
   onImageClick
 }) => {
-  const [isPaused, setIsPaused] = useState(false);
-  const [isSlowSpeed, setIsSlowSpeed] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+
+    const speed = 55; // pixels per second
+    let frame = 0;
+    let last = performance.now();
+
+    const step = (now: number) => {
+      const dt = Math.min(now - last, 100);
+      last = now;
+
+      const half = el.scrollWidth / 2;
+      if (half > 0) {
+        let next = el.scrollLeft + (speed * dt) / 1000;
+        if (next >= half) next -= half;
+        if (next <= 0) next += half;
+        el.scrollLeft = next;
+      }
+
+      frame = requestAnimationFrame(step);
+    };
+
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, [sets.length]);
 
   // Manual nudge functions for users who want to jump forward or backward
   const handleNudge = (direction: 'left' | 'right') => {
@@ -22,7 +47,7 @@ export const PortfolioMarquee: React.FC<PortfolioMarqueeProps> = ({
     const scrollAmount = 600;
     scrollContainerRef.current.scrollBy({
       left: direction === 'right' ? scrollAmount : -scrollAmount,
-      behavior: 'smooth'
+      behavior: 'auto'
     });
   };
 
@@ -71,15 +96,11 @@ export const PortfolioMarquee: React.FC<PortfolioMarqueeProps> = ({
       */}
       <div 
         ref={scrollContainerRef}
-        className="w-full overflow-x-auto no-scrollbar scroll-smooth"
+        className="w-full overflow-x-auto no-scrollbar"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <div 
-          className={`animate-marquee-portfolio ${
-            isSlowSpeed ? 'animate-marquee-slow' : ''
-          } ${isPaused ? 'animate-marquee-paused' : ''}`}
-        >
-          {/* Primary Sequence (1..5) */}
+        <div className="flex w-max">
+          {/* Primary Sequence */}
           {sets.map((set, idx) => (
             <PortfolioCollage
               key={`${set.id}-track-1`}

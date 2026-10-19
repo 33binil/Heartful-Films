@@ -1,11 +1,13 @@
 import brideEditorial from '../assets/images/portfolio/wedding4.webp';
-import portfolioEventReception from '../assets/images/portfolio_event_reception_1792327003671.jpg';
+
 import servicesCommercial from '../assets/images/ads-shoot.webp';
 import servicesDance from '../assets/images/dance.webp';
-import heroCouple from '../assets/images/hero_cinematic_couple_1792326980733.jpg';
-import missionCouple from '../assets/images/mission_couple_intimate_1792327002399.jpg';
-import bouquetDetail from '../assets/images/about_bouquet_detail_1792326982071.jpg';
+
 import celebrity1 from '../assets/images/portfolio/celebrity1.webp';
+import heroCouple from '../assets/images/portfolio/wedding5.webp';
+import missionCouple from '../assets/images/portfolio/wedding6.webp';
+import portfolioEventReception from '../assets/images/portfolio/dance2.webp';
+import bouquetDetail from '../assets/images/about-wedding.webp';
 
 export interface ServiceItem {
   id: string;
