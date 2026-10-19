@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { BotanicalFlourish } from './FloralIcons';
 import weddingImage from '../assets/images/about-wedding.webp';
 import aboutVideo from '../assets/images/about-video-v1.mp4';
+import logoImage from '../assets/images/logo.jpg';
 
 interface AboutSectionProps {
   onLearnMoreClick?: () => void;
@@ -73,8 +74,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMoreClick }) 
               whileInView={{ opacity: 0.6, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.3 }}
-              className="mt-12 hidden md:block pointer-events-none"
+              className="mt-12 hidden md:flex flex-col items-start gap-1 pointer-events-none"
             >
+              <img
+                src={logoImage}
+                alt="Heartful Films logo"
+                className="w-20 h-20 rounded-full object-cover border border-[#D8C8B8]/70 shadow-xs"
+              />
               <BotanicalFlourish className="w-40 h-28 text-[#8D7163]" />
             </motion.div>
           </motion.div>
