@@ -202,9 +202,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialProjectTy
                     </span>
                     <a 
                       href={`tel:${BRAND_INFO.phonePlaceholder}`}
-                      className="text-xs sm:text-sm text-[#292724] hover:text-[#8D7163] transition-colors"
+                      className="text-xs sm:text-sm text-[#292724] hover:text-[#8D7163] transition-colors block"
                     >
                       {BRAND_INFO.phonePlaceholder}
+                    </a>
+                    <a 
+                      href={`tel:${BRAND_INFO.phonePlaceholder2}`}
+                      className="text-xs sm:text-sm text-[#292724] hover:text-[#8D7163] transition-colors block"
+                    >
+                      {BRAND_INFO.phonePlaceholder2}
                     </a>
                   </div>
                 </div>

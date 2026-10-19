@@ -139,7 +139,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-3.5 h-3.5 text-[#8D7163]" />
-                <span>{BRAND_INFO.phonePlaceholder}</span>
+                <a href={`tel:${BRAND_INFO.phonePlaceholder}`} className="hover:text-white transition-colors">
+                  {BRAND_INFO.phonePlaceholder}
+                </a>
+                <span className="text-[#8D7163]">·</span>
+                <a href={`tel:${BRAND_INFO.phonePlaceholder2}`} className="hover:text-white transition-colors">
+                  {BRAND_INFO.phonePlaceholder2}
+                </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <MapPin className="w-3.5 h-3.5 text-[#8D7163]" />

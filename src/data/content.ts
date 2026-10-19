@@ -44,6 +44,7 @@ export const BRAND_INFO = {
   instagramUrl: "https://www.instagram.com/_heartful___/",
   instagramHandle: "@_heartful___",
   phonePlaceholder: "+91 96561 06421",
+  phonePlaceholder2: "+91 94971 22130",
   emailPlaceholder: "soon",
   locationPlaceholder: "Kachani, Karakulam P. O, Trivandrum",
 };
