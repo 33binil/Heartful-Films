@@ -1,4 +1,4 @@
-import brideEditorial from '../assets/images/about_editorial_bride_1792326982445.jpg';
+import brideEditorial from '../assets/images/portfolio/wedding3.webp';
 import portfolioEventReception from '../assets/images/portfolio_event_reception_1792327003671.jpg';
 import servicesCommercial from '../assets/images/services_commercial_brand_1792326982776.jpg';
 import servicesDance from '../assets/images/services_dance_stage_1792326982367.jpg';

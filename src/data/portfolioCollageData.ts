@@ -1,17 +1,18 @@
-import porchBench from '../assets/images/collage_porch_bench_1792329769670.jpg';
-import brideEditorial from '../assets/images/about_editorial_bride_1792326982445.jpg';
-import weddingArch from '../assets/images/collage_wedding_arch_1792329749561.jpg';
-import preweddingVintage from '../assets/images/collage_prewedding_vintage_1792329768764.jpg';
-import heroCouple from '../assets/images/hero_cinematic_couple_1792326980733.jpg';
-import missionCouple from '../assets/images/mission_couple_intimate_1792327002399.jpg';
-import eventsCelebration from '../assets/images/collage_events_celebration_1792329769600.jpg';
-import portfolioEventReception from '../assets/images/portfolio_event_reception_1792327003671.jpg';
-import blogChurchCeremony from '../assets/images/blog_church_ceremony_1792327922746.jpg';
-import servicesCommercial from '../assets/images/services_commercial_brand_1792326982776.jpg';
-import brandCinematicRig from '../assets/images/collage_brand_cinematic_rig_1792329829912.jpg';
-import servicesDance from '../assets/images/services_dance_stage_1792326982367.jpg';
-import danceDuo from '../assets/images/collage_dance_duo_1792329830526.jpg';
-import danceStageArch from '../assets/images/collage_dance_stage_arch_1792329770389.jpg';
+import porchBench from '../assets/images/portfolio/wedding1.webp';
+import brideEditorial from '../assets/images/portfolio/wedding2.webp';
+import weddingArch from '../assets/images/portfolio/wedding3.webp';
+import preweddingVintage from '../assets/images/portfolio/wedding4.webp';
+import heroCouple from '../assets/images/portfolio/wedding5.webp';
+import missionCouple from '../assets/images/portfolio/wedding6.webp';
+import eventsCelebration from '../assets/images/portfolio/dance1.webp';
+import portfolioEventReception from '../assets/images/portfolio/dance2.webp';
+import blogChurchCeremony from '../assets/images/portfolio/dance3.webp';
+import photoshoot1 from '../assets/images/portfolio/photoshoot1.webp';
+import photoshoot2 from '../assets/images/portfolio/photoshoot2.webp';
+import photoshoot3 from '../assets/images/portfolio/photoshoot3.webp';
+import celebrity1 from '../assets/images/portfolio/celebrity1.webp';
+import celebrity2 from '../assets/images/portfolio/celebrity2.webp';
+import celebrity3 from '../assets/images/portfolio/celebrity3.webp';
 
 export interface PortfolioCollageImage {
   id: string;
@@ -35,7 +36,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
   {
     id: 'set-weddings',
     category: 'WEDDINGS',
-    instagramUrl: 'https://www.instagram.com/_heartful___/',
+    instagramUrl: 'https://www.instagram.com/reel/DXq0sg9Df-o/?utm_source=ig_web_copy_link&exln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==',
     description: 'Timeless ceremonies, quiet porch moments, and sweeping alpine vows.',
     images: [
       {
@@ -68,9 +69,9 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
     ]
   },
   {
-    id: 'set-prewedding',
-    category: 'PRE-WEDDING',
-    instagramUrl: 'https://www.instagram.com/_heartful___/',
+    id: 'set-tamil-wedding',
+    category: 'TAMIL-WEDDING',
+    instagramUrl: 'https://www.instagram.com/p/DbVdvIzFE6v/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==',
     description: 'Cinematic sunset lake rowboats, coastal highways, and heartfelt stillness.',
     images: [
       {
@@ -104,8 +105,8 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
   },
   {
     id: 'set-events',
-    category: 'EVENTS',
-    instagramUrl: 'https://www.instagram.com/_heartful___/',
+    category: 'CLASSICAL-DANCE-EVENT',
+    instagramUrl: 'https://www.instagram.com/p/DVTZmo3D094/?utm_source=ig_web_copy_link&obrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==',
     description: 'Candlelit long-table dinners, live acoustic serenades, and spirited celebrations.',
     images: [
       {
@@ -138,14 +139,14 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
     ]
   },
   {
-    id: 'set-ads-brands',
-    category: 'ADS & BRAND FILMS',
-    instagramUrl: 'https://www.instagram.com/_heartful___/',
-    description: 'Commercial productions, brand visual identity, and cinematic director setups.',
+    id: 'photoshoot',
+    category: 'PHOTOSHOOT',
+    instagramUrl: 'https://www.instagram.com/reel/DTkqzFukpPV/?utm_source=ig_web_copy_link&psln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==',
+    description: 'Capturing motion with clarity, precision and creativity.',
     images: [
       {
         id: 'ad-1',
-        src: servicesCommercial,
+        src: photoshoot1,
         alt: 'Creative director monitoring commercial shot on monitor',
         caption: 'Director Monitor & Framing',
         objectPosition: 'center 40%',
@@ -154,7 +155,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'ad-2',
-        src: brandCinematicRig,
+        src: photoshoot2,
         alt: 'Director with professional cinema camera rig filming model in warehouse studio',
         caption: 'Studio Silk Campaign',
         objectPosition: 'center 30%',
@@ -163,7 +164,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'ad-3',
-        src: weddingArch,
+        src: photoshoot3,
         alt: 'Architectural stone arch framing',
         caption: 'Alpine Location Scouting',
         objectPosition: 'center 30%',
@@ -173,14 +174,14 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
     ]
   },
   {
-    id: 'set-dance',
-    category: 'DANCE PROGRAMS',
+    id: 'celebrity-reel-shoot',
+    category: 'CELEBRITY SHOOT',
     instagramUrl: 'https://www.instagram.com/_heartful___/',
     description: 'Theatrical stage lighting, atmospheric mist, and expressive contemporary choreography.',
     images: [
       {
         id: 'dp-1',
-        src: servicesDance,
+        src: celebrity1,
         alt: 'Stage performance lighting and dramatic haze',
         caption: 'Proscenium Atmosphere',
         objectPosition: 'center 35%',
@@ -189,7 +190,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'dp-2',
-        src: danceDuo,
+        src: celebrity2,
         alt: 'Contemporary dance duo suspended mid-air in theatrical light',
         caption: 'Synchronized Gravity',
         objectPosition: 'center 40%',
@@ -198,7 +199,7 @@ export const PORTFOLIO_COLLAGE_SETS: PortfolioCollageSet[] = [
       },
       {
         id: 'dp-3',
-        src: danceStageArch,
+        src: celebrity3,
         alt: 'Solo expressive dancer in amber fabric under dramatic warm spotlight',
         caption: 'Amber Flight in the Mist',
         objectPosition: 'center 30%',
