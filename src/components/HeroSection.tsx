@@ -96,7 +96,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       />
 
       {/* Hero Typography & Glass Elements with Staggered Entrance */}
-      <div className="z-10 max-w-4xl mx-auto px-6 text-center text-white flex flex-col items-center lg:absolute lg:bottom-16 lg:left-10 xl:left-16 lg:mx-0 lg:max-w-xl lg:items-start lg:text-left lg:z-20">
+      <div className="absolute inset-x-0 bottom-10 z-10 mx-auto max-w-4xl px-6 text-center text-white flex flex-col items-center sm:static sm:inset-auto lg:absolute lg:bottom-16 lg:left-10 xl:left-16 lg:right-auto lg:mx-0 lg:max-w-xl lg:items-start lg:text-left lg:z-20">
         
         {/* Floating Glassmorphic Badge */}
         <motion.div 
@@ -137,7 +137,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 lg:absolute lg:bottom-16 lg:right-10 xl:right-16 lg:z-20 lg:items-end"
+        className="hidden sm:flex flex-col sm:flex-row items-center gap-4 sm:gap-6 lg:absolute lg:bottom-16 lg:right-10 xl:right-16 lg:z-20 lg:items-end"
       >
         <a
           href="#portfolio"
@@ -166,13 +166,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         </a>
       </motion.div>
 
-      {/* Down indicator with glass disc */}
+      {/* Down indicator with glass disc — floating overlay on the bottom-right */}
       <motion.a 
         href="#intro" 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.9 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/80 hover:text-white transition-all flex flex-col items-center gap-2 focus:outline-none group cursor-pointer"
+        className="absolute bottom-6 right-6 sm:right-10 xl:right-16 z-20 text-white/80 hover:text-white transition-all flex flex-col items-center gap-2 focus:outline-none group cursor-pointer"
         aria-label="Scroll to introduction"
       >
         <span className="text-[9px] uppercase tracking-[0.3em] font-light opacity-80 group-hover:opacity-100">Scroll</span>
