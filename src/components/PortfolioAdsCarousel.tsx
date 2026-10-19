@@ -63,9 +63,10 @@ export const PortfolioAdsCarousel: React.FC<PortfolioAdsCarouselProps> = ({
   }, [ads.length, autoPlayInterval, activeIndex]);
 
   useEffect(() => {
+    const activeSlide = activeIndex + (ads.length > 1 ? 1 : 0);
     videoRefs.current.forEach((video, index) => {
       if (!video) return;
-      if (index === activeIndex) {
+      if (index === activeSlide) {
         video.play().catch(() => undefined);
       } else {
         video.pause();
@@ -90,7 +91,17 @@ export const PortfolioAdsCarousel: React.FC<PortfolioAdsCarouselProps> = ({
 
   if (ads.length === 0) return null;
 
-  const trackOffset = (viewportWidth - slideWidth) / 2 - activeIndex * (slideWidth + gap);
+  const hasClones = ads.length > 1;
+  const slides: Array<{ ad: PortfolioAd; realIndex: number }> = hasClones
+    ? [
+        { ad: ads[ads.length - 1], realIndex: ads.length - 1 },
+        ...ads.map((ad, realIndex) => ({ ad, realIndex })),
+        { ad: ads[0], realIndex: 0 },
+      ]
+    : ads.map((ad, realIndex) => ({ ad, realIndex }));
+  const slideIndex = activeIndex + (hasClones ? 1 : 0);
+
+  const trackOffset = (viewportWidth - slideWidth) / 2 - slideIndex * (slideWidth + gap);
 
   return (
     <div className="relative w-full select-none border-t border-[#D8C8B8]/50 pt-12 sm:pt-16 lg:pt-20 mt-12 sm:mt-16 lg:mt-20">
@@ -119,11 +130,12 @@ export const PortfolioAdsCarousel: React.FC<PortfolioAdsCarouselProps> = ({
           className="flex gap-4 sm:gap-6 items-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform"
           style={{ transform: `translate3d(${trackOffset}px, 0, 0)` }}
         >
-          {ads.map((ad, index) => {
-            const isActive = index === activeIndex;
+          {slides.map((slide, index) => {
+            const { ad, realIndex } = slide;
+            const isActive = index === slideIndex;
             return (
               <div
-                key={ad.id}
+                key={`${ad.id}-${index}`}
                 ref={(node) => {
                   slideRefs.current[index] = node;
                 }}
@@ -131,7 +143,7 @@ export const PortfolioAdsCarousel: React.FC<PortfolioAdsCarouselProps> = ({
                   isActive ? 'opacity-100 scale-100' : 'opacity-60 scale-[0.96]'
                 }`}
                 onClick={() => {
-                  if (!isActive) goTo(index);
+                  if (!isActive) goTo(realIndex);
                 }}
               >
                 <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-[#292724] shadow-[0_18px_50px_-24px_rgba(41,39,36,0.55)]">

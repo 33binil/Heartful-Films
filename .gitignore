@@ -4,5 +4,6 @@ dist/
 coverage/
 .DS_Store
 *.log
+src/assets/video/Ads/SHORT_FILM_AD.mp4
 .env*
 !.env.example

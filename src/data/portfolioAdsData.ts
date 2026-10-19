@@ -15,15 +15,13 @@
  * }
  *
  * The section is hidden automatically while this array is empty.
- *
- * NOTE ON GOOGLE DRIVE SOURCES:
- * A Google Drive share URL (and its /uc?export=download variant) is not a
- * direct media URL, so it cannot be played by the carousel's HTML <video>
- * element. The original Drive URL is kept below for reference; to enable
- * playback, upload/export the film to a direct MP4/WebM URL (or integrate the
- * Drive /preview URL in an iframe). As of this entry, the Drive download
- * endpoint returns an HTML page for this file rather than video content.
  */
+import Gardenia from '../assets/video/Ads/CONVENTION_CENTRE_AD_OPTIMIZED.mp4';
+import carAd from '../assets/video/Ads/CAR_AD_OPTIMIZED.mp4';
+import danceSchoolAd from '../assets/video/Ads/DANCE_SCHOOL_AD_OPTIMIZED.mp4';
+import politicalAd from '../assets/video/Ads/POLITICAL_AD_OPTIMIZED.mp4';
+import shortFilmAd from '../assets/video/Ads/SHORT_FILM_AD_OPTIMIZED.mp4';
+
 export interface PortfolioAd {
   id: string;
   title: string;
@@ -40,10 +38,35 @@ export const portfolioAdsData: PortfolioAd[] = [
     id: 'gardenia-convention-centre',
     title: 'Gardenia Convention Centre',
     brand: 'Gardenia Convention Centre',
-    // Google Drive file ID: 1cvbSLWRSil5OE2KuO0Q2P8EX18bQCQrm
-    // Not directly playable by an HTML <video> element (see note above).
-    videoUrl:
-      'https://drive.google.com/file/d/1cvbSLWRSil5OE2KuO0Q2P8EX18bQCQrm/view?usp=drive_link',
+    videoUrl: Gardenia,
     alt: 'Gardenia Convention Centre commercial film',
+  },
+  {
+    id: 'car-commercial',
+    title: 'Car Commercial',
+    brand: 'Automotive Campaign',
+    videoUrl: carAd,
+    alt: 'Cinematic car commercial film',
+  },
+  {
+    id: 'dance-school',
+    title: 'Dance School',
+    brand: 'Dance Academy',
+    videoUrl: danceSchoolAd,
+    alt: 'Dance school promotional film',
+  },
+  {
+    id: 'political-campaign',
+    title: 'Political Campaign',
+    brand: 'Election Campaign',
+    videoUrl: politicalAd,
+    alt: 'Political campaign film',
+  },
+  {
+    id: 'short-film',
+    title: 'Short Film',
+    brand: 'Heartful Films',
+    videoUrl: shortFilmAd,
+    alt: 'Cinematic short film',
   },
 ];
