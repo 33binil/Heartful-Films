@@ -122,6 +122,8 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
                   <img
                     src={service.image}
                     alt={service.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-3 left-3 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] uppercase tracking-widest font-medium">

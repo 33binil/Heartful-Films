@@ -3,21 +3,28 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { motion, useScroll, useSpring, AnimatePresence } from 'motion/react';
 import { ArrowUp, ArrowLeft } from 'lucide-react';
 import { AnnouncementBar } from './components/AnnouncementBar';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
-import { IntroSection } from './components/IntroSection';
-import { AboutSection } from './components/AboutSection';
-import { ServicesSection } from './components/ServicesSection';
-import { PortfolioSection } from './components/PortfolioSection';
-import { BlogSection } from './components/BlogSection';
-import { MissionSection } from './components/MissionSection';
-import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
 import { LoadingScreen } from './components/LoadingScreen';
+
+const IntroSection = lazy(() => import('./components/IntroSection').then((m) => ({ default: m.IntroSection })));
+const AboutSection = lazy(() => import('./components/AboutSection').then((m) => ({ default: m.AboutSection })));
+const ServicesSection = lazy(() => import('./components/ServicesSection').then((m) => ({ default: m.ServicesSection })));
+const PortfolioSection = lazy(() => import('./components/PortfolioSection').then((m) => ({ default: m.PortfolioSection })));
+const BlogSection = lazy(() => import('./components/BlogSection').then((m) => ({ default: m.BlogSection })));
+const MissionSection = lazy(() => import('./components/MissionSection').then((m) => ({ default: m.MissionSection })));
+const ContactSection = lazy(() => import('./components/ContactSection').then((m) => ({ default: m.ContactSection })));
+const Footer = lazy(() => import('./components/Footer').then((m) => ({ default: m.Footer })));
+
+const SectionFallback = () => (
+  <div className="w-full min-h-[50vh] flex items-center justify-center bg-[#F8F6F1]">
+    <div className="w-7 h-7 border-2 border-[#D8C8B8] border-t-[#8D7163] rounded-full animate-spin" />
+  </div>
+);
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'blog'>('home');
@@ -165,25 +172,27 @@ export default function App() {
               onCreateClick={() => scrollToContact()}
             />
 
-            {/* 4. Introduction Section */}
-            <IntroSection />
+            <Suspense fallback={<SectionFallback />}>
+              {/* 4. Introduction Section */}
+              <IntroSection />
 
-            {/* 5. Editorial About Section with Asymmetrical Overlapping Layout */}
-            <AboutSection onLearnMoreClick={scrollToPortfolio} />
+              {/* 5. Editorial About Section with Asymmetrical Overlapping Layout */}
+              <AboutSection onLearnMoreClick={scrollToPortfolio} />
 
-            {/* 6. Services Section */}
-            <ServicesSection 
-              onSelectServiceForBooking={(serviceTitle) => scrollToContact(serviceTitle)} 
-            />
+              {/* 6. Services Section */}
+              <ServicesSection 
+                onSelectServiceForBooking={(serviceTitle) => scrollToContact(serviceTitle)} 
+              />
 
-            {/* 7. Portfolio Section with Category Filters & Lightbox */}
-            <PortfolioSection />
+              {/* 7. Portfolio Section with Category Filters & Lightbox */}
+              <PortfolioSection />
 
-            {/* 8. Mission Statement Section with Circular Vignette */}
-            <MissionSection />
+              {/* 8. Mission Statement Section with Circular Vignette */}
+              <MissionSection />
 
-            {/* 9. Contact / Booking Section */}
-            <ContactSection initialProjectType={selectedProjectType} />
+              {/* 9. Contact / Booking Section */}
+              <ContactSection initialProjectType={selectedProjectType} />
+            </Suspense>
           </>
         )}
 
@@ -209,7 +218,9 @@ export default function App() {
             </div>
 
             {/* Editorial Blog Section */}
-            <BlogSection onInquireStory={(storyName) => scrollToContact(storyName)} />
+            <Suspense fallback={<SectionFallback />}>
+              <BlogSection onInquireStory={(storyName) => scrollToContact(storyName)} />
+            </Suspense>
 
             {/* Inquire Banner at Bottom of Blog Page */}
             <div className="w-full bg-[#EDE3D8]/30 border-t border-[#D8C8B8]/50 py-16 px-6 text-center">
@@ -236,7 +247,9 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer onNavigate={navigateTo} />
+      <Suspense fallback={<SectionFallback />}>
+        <Footer onNavigate={navigateTo} />
+      </Suspense>
 
       {/* Floating Animated Back to Top Glass Pill */}
       <AnimatePresence>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { BotanicalFlourish } from './FloralIcons';
+import { LazyVideo } from './LazyVideo';
 import weddingImage from '../assets/images/about-wedding.webp';
 import aboutVideo from '../assets/images/about-video-v1.mp4';
 import logoImage from '../assets/images/logo.jpg';
@@ -79,6 +80,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMoreClick }) 
               <img
                 src={logoImage}
                 alt="Heartful Films logo"
+                loading="lazy"
+                decoding="async"
                 className="w-20 h-20 rounded-full object-cover border border-[#D8C8B8]/70 shadow-xs"
               />
               <BotanicalFlourish className="w-40 h-28 text-[#8D7163]" />
@@ -108,6 +111,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMoreClick }) 
                   <img
                     src={weddingImage}
                     alt="Heartful Films logo"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain p-6 transition-transform duration-700 ease-out group-hover:scale-106"
                   />
                 </div>
@@ -131,15 +136,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMoreClick }) 
                 className="relative z-10 w-64 sm:w-80 md:w-96 shadow-[0_16px_48px_rgba(41,39,36,0.16)] transition-shadow duration-300"
               >
                 <div className="relative aspect-3/4 overflow-hidden bg-[#EDE3D8] border border-white/80 rounded-xs">
-                  <video
+                  <LazyVideo
                     src={aboutVideo}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="metadata"
-                    disablePictureInPicture
-                    aria-label="Editorial bridal portrait video"
+                    ariaLabel="Editorial bridal portrait video"
                     className="w-full h-full object-cover block"
                   />
 

@@ -156,7 +156,7 @@ export const PortfolioAdsCarousel: React.FC<PortfolioAdsCarouselProps> = ({
                     muted
                     loop
                     playsInline
-                    preload="metadata"
+                    preload="none"
                     aria-label={ad.alt ?? ad.title}
                     className="absolute inset-0 w-full h-full object-cover"
                   />

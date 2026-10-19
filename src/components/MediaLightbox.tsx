@@ -105,6 +105,8 @@ export const MediaLightbox: React.FC<MediaLightboxProps> = ({
             <img
               src={item.image}
               alt={item.title}
+              loading="lazy"
+              decoding="async"
               className="max-h-[68vh] w-auto max-w-full object-contain rounded-xl shadow-2xl border border-white/10"
             />
 

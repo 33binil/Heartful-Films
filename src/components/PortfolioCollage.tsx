@@ -15,14 +15,14 @@ export const PortfolioCollage: React.FC<PortfolioCollageProps> = ({
   const [imgLandscape, imgVertical, imgArch] = set.images;
 
   return (
-    <div className="flex flex-col shrink-0 w-[740px] sm:w-[840px] md:w-[920px] lg:w-[1060px] px-3 sm:px-5 md:px-6 lg:px-24">
+    <div className="flex flex-col shrink-0 w-[740px] sm:w-[840px] md:w-[920px] lg:w-[1180px] px-3 sm:px-5 md:px-6 lg:px-24">
       
       {/* 
         Artistic 3-Photo Composition:
         Compact attached layout on mobile and tablet; spacious gap layout on desktop
       */}
       <div 
-        className="relative w-full h-[430px] sm:h-[470px] md:h-[500px] bg-transparent select-none group/canvas"
+        className="relative w-full h-[430px] sm:h-[470px] md:h-[500px] lg:h-[620px] bg-transparent select-none group/canvas"
       >
         {/* 
           1. Photo 1 (Top-Left / Landscape Photo):
@@ -30,7 +30,7 @@ export const PortfolioCollage: React.FC<PortfolioCollageProps> = ({
         */}
         <div
           onClick={() => onImageClick && onImageClick(imgLandscape)}
-          className="absolute top-[8%] left-[6%] w-[54%] h-[54%] lg:top-[12%] lg:left-[2%] lg:w-[40%] lg:h-[56%] bg-[#C9BCAD]/20 border-2 border-white shadow-[0_10px_28px_rgba(41,39,36,0.14)] rounded-xs overflow-hidden cursor-pointer z-1 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_16px_38px_rgba(41,39,36,0.22)] group"
+          className="absolute top-[8%] left-[6%] w-[54%] h-[54%] lg:top-[12%] lg:left-[2%] lg:w-[42%] lg:h-[58%] bg-[#C9BCAD]/20 border-2 border-white shadow-[0_10px_28px_rgba(41,39,36,0.14)] rounded-xs overflow-hidden cursor-pointer z-1 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_16px_38px_rgba(41,39,36,0.22)] group"
           title={imgLandscape.caption || imgLandscape.alt}
         >
           <img
@@ -60,7 +60,7 @@ export const PortfolioCollage: React.FC<PortfolioCollageProps> = ({
         */}
         <div
           onClick={() => onImageClick && onImageClick(imgVertical)}
-          className="absolute top-[12%] left-[33%] w-[38%] h-[80%] lg:top-[6%] lg:left-[47%] lg:w-[26%] lg:h-[84%] bg-[#C9BCAD]/20 border-2 border-white shadow-[0_18px_45px_rgba(41,39,36,0.24)] rounded-xs overflow-hidden cursor-pointer z-10 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_24px_55px_rgba(41,39,36,0.34)] group"
+          className="absolute top-[12%] left-[33%] w-[38%] h-[80%] lg:top-[6%] lg:left-[47%] lg:w-[30%] lg:h-[86%] bg-[#C9BCAD]/20 border-2 border-white shadow-[0_18px_45px_rgba(41,39,36,0.24)] rounded-xs overflow-hidden cursor-pointer z-10 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_24px_55px_rgba(41,39,36,0.34)] group"
           title={imgVertical.caption || imgVertical.alt}
         >
           <img
@@ -90,7 +90,7 @@ export const PortfolioCollage: React.FC<PortfolioCollageProps> = ({
         */}
         <div
           onClick={() => onImageClick && onImageClick(imgArch)}
-          className="absolute bottom-[8%] left-[69%] w-[25%] h-[68%] lg:bottom-[8%] lg:left-[78%] lg:w-[20%] lg:h-[72%] bg-[#C9BCAD]/20 border-2 border-white shadow-[0_12px_32px_rgba(41,39,36,0.16)] rounded-t-[70px] sm:rounded-t-[90px] md:rounded-t-[110px] rounded-b-xs overflow-hidden cursor-pointer z-5 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_18px_42px_rgba(41,39,36,0.24)] group"
+          className="absolute bottom-[8%] left-[69%] w-[25%] h-[68%] lg:bottom-[8%] lg:left-[78%] lg:w-[22%] lg:h-[74%] bg-[#C9BCAD]/20 border-2 border-white shadow-[0_12px_32px_rgba(41,39,36,0.16)] rounded-t-[70px] sm:rounded-t-[90px] md:rounded-t-[110px] rounded-b-xs overflow-hidden cursor-pointer z-5 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_18px_42px_rgba(41,39,36,0.24)] group"
           title={imgArch.caption || imgArch.alt}
         >
           <img

@@ -105,6 +105,8 @@ export const BlogModal: React.FC<BlogModalProps> = ({ post, onClose, onInquire }
               <img
                 src={activeImage}
                 alt={post.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-all duration-500"
               />
             </div>
@@ -120,7 +122,7 @@ export const BlogModal: React.FC<BlogModalProps> = ({ post, onClose, onInquire }
                       activeImage === img ? 'border-[#292724] ring-2 ring-[#292724]/40 shadow-xs' : 'border-white/80 opacity-70 hover:opacity-100'
                     }`}
                   >
-                    <img src={img} alt={`Gallery view ${idx + 1}`} className="w-full h-full object-cover" />
+                    <img src={img} alt={`Gallery view ${idx + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   </button>
                 ))}
               </div>

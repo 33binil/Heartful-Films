@@ -51,7 +51,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   }, [isMobile]);
   return (
     <section
-      className="hero-viewport relative w-full min-h-[600px] -mt-[76px] pt-[76px] overflow-hidden flex items-center justify-center bg-[#292724]"
+      className="hero-viewport relative w-full min-h-[600px] -mt-[76px] pt-[76px] overflow-hidden flex flex-col items-center justify-center bg-[#292724]"
       aria-label="Hero"
     >
       {/* High-Fidelity Cinematic Background — Local Auto-playing Looping Video */}
@@ -96,7 +96,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       />
 
       {/* Hero Typography & Glass Elements with Staggered Entrance */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center text-white flex flex-col items-center">
+      <div className="z-10 max-w-4xl mx-auto px-6 text-center text-white flex flex-col items-center lg:absolute lg:bottom-16 lg:left-10 xl:left-16 lg:mx-0 lg:max-w-xl lg:items-start lg:text-left lg:z-20">
         
         {/* Floating Glassmorphic Badge */}
         <motion.div 
@@ -126,45 +126,45 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="font-editorial italic text-lg sm:text-xl md:text-2xl text-[#F8F6F1]/95 max-w-xl mx-auto font-light tracking-wide mb-10 drop-shadow-xs text-balance"
+          className="font-editorial italic text-lg sm:text-xl md:text-2xl text-[#F8F6F1]/95 max-w-xl mx-auto font-light tracking-wide mb-10 lg:mb-0 drop-shadow-xs text-balance"
         >
           We capture the moments, emotions, and stories that stay with you forever.
         </motion.p>
-
-        {/* Translucent Glass CTA Buttons */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
-        >
-          <a
-            href="#portfolio"
-            onClick={(e) => {
-              if (onExploreClick) {
-                e.preventDefault();
-                onExploreClick();
-              }
-            }}
-            className="w-full sm:w-auto px-8 py-3.5 bg-white/85 hover:bg-white text-[#292724] text-xs uppercase tracking-[0.25em] font-medium transition-all duration-300 border border-white/80 backdrop-blur-md text-center shadow-[0_8px_25px_rgba(0,0,0,0.18)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.28)] transform hover:-translate-y-0.5 active:translate-y-0 rounded-xs"
-          >
-            EXPLORE OUR WORK
-          </a>
-
-          <a
-            href="#contact"
-            onClick={(e) => {
-              if (onCreateClick) {
-                e.preventDefault();
-                onCreateClick();
-              }
-            }}
-            className="w-full sm:w-auto px-8 py-3.5 bg-white/15 hover:bg-white/25 text-white text-xs uppercase tracking-[0.25em] font-medium transition-all duration-300 border border-white/40 backdrop-blur-md text-center shadow-[0_4px_16px_rgba(0,0,0,0.12)] hover:border-white/60 transform hover:-translate-y-0.5 active:translate-y-0 rounded-xs"
-          >
-            LET'S CREATE TOGETHER
-          </a>
-        </motion.div>
       </div>
+
+      {/* Translucent Glass CTA Buttons */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 lg:absolute lg:bottom-16 lg:right-10 xl:right-16 lg:z-20 lg:items-end"
+      >
+        <a
+          href="#portfolio"
+          onClick={(e) => {
+            if (onExploreClick) {
+              e.preventDefault();
+              onExploreClick();
+            }
+          }}
+          className="w-full sm:w-auto px-8 py-3.5 bg-white/85 hover:bg-white text-[#292724] text-xs uppercase tracking-[0.25em] font-medium transition-all duration-300 border border-white/80 backdrop-blur-md text-center shadow-[0_8px_25px_rgba(0,0,0,0.18)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.28)] transform hover:-translate-y-0.5 active:translate-y-0 rounded-xs"
+        >
+          EXPLORE OUR WORK
+        </a>
+
+        <a
+          href="#contact"
+          onClick={(e) => {
+            if (onCreateClick) {
+              e.preventDefault();
+              onCreateClick();
+            }
+          }}
+          className="w-full sm:w-auto px-8 py-3.5 bg-white/15 hover:bg-white/25 text-white text-xs uppercase tracking-[0.25em] font-medium transition-all duration-300 border border-white/40 backdrop-blur-md text-center shadow-[0_4px_16px_rgba(0,0,0,0.12)] hover:border-white/60 transform hover:-translate-y-0.5 active:translate-y-0 rounded-xs"
+        >
+          LET'S CREATE TOGETHER
+        </a>
+      </motion.div>
 
       {/* Down indicator with glass disc */}
       <motion.a 

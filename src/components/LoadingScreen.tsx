@@ -17,7 +17,7 @@ export const LoadingScreen: React.FC = () => {
         className="relative flex flex-col items-center"
       >
         {/* Logo with a passing light glare */}
-        <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-[#D8C8B8]/70 shadow-[0_18px_50px_-18px_rgba(41,39,36,0.35)]">
+        <div className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-52 lg:h-52 xl:w-60 xl:h-60 rounded-full overflow-hidden border border-[#D8C8B8]/70 shadow-[0_18px_50px_-18px_rgba(41,39,36,0.35)]">
           <img
             src={logoImage}
             alt="Heartful Films logo"
