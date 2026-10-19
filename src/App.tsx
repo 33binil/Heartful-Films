@@ -17,11 +17,13 @@ import { BlogSection } from './components/BlogSection';
 import { MissionSection } from './components/MissionSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { LoadingScreen } from './components/LoadingScreen';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'blog'>('home');
   const [selectedProjectType, setSelectedProjectType] = useState<string>('Weddings');
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Smooth scroll reading indicator at the very top
   const { scrollYProgress } = useScroll();
@@ -64,6 +66,22 @@ export default function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Minimal initial loading screen with a minimum display time
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsLoading(false), 1800);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  // Lock page scroll while the loading screen is visible
+  useEffect(() => {
+    if (!isLoading) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [isLoading]);
 
   const navigateTo = (page: 'home' | 'blog', sectionId?: string) => {
     if (page === 'blog') {
@@ -119,6 +137,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F8F6F1] text-[#292724] font-sans flex flex-col selection:bg-[#D8C8B8] selection:text-[#292724] relative">
+      <AnimatePresence>
+        {isLoading && <LoadingScreen key="loading-screen" />}
+      </AnimatePresence>
+
       {/* Editorial Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2.5px] bg-[#8D7163] origin-left z-50 pointer-events-none opacity-85"

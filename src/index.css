@@ -169,6 +169,48 @@
   animation: shimmerSlide 1.2s ease-in-out;
 }
 
+/* Loading screen light glare sweeping across the logo */
+@keyframes loadingGlare {
+  0% {
+    transform: translateX(-120%) rotate(12deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(340%) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes loadingBar {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(310%);
+  }
+}
+
+.loading-glare {
+  animation: loadingGlare 2.2s ease-in-out infinite;
+}
+
+.loading-bar {
+  animation: loadingBar 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-glare,
+  .loading-bar {
+    animation: none;
+  }
+}
+
 /* Horizontal Continuous Marquee for Dynamic Portfolio Collage Sets */
 @keyframes marqueeScrollLeft {
   0% {
