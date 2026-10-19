@@ -32,11 +32,11 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Traditional Weddings",
     date: "October 2025",
     readTime: "4 min read",
-    image: "blogTraditionalWedding",
+    image: blogTraditionalWedding,
     galleryImages: [
-      "blogTraditionalWedding",
-      "bouquetDetail",
-      "heroCouple"
+      blogTraditionalWedding,
+      bouquetDetail,
+      heroCouple
     ],
     location: "Kunnathur Heritage Estate",
     excerpt: "There is a quiet majesty when the sacred fire is lit. Between Abhishek and Saloni's vows beneath garlands of jasmine and red roses, every glance held generations of family warmth and unscripted laughter...",
@@ -56,11 +56,11 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Church Weddings",
     date: "September 2025",
     readTime: "5 min read",
-    image: "blogChurchCeremony",
+    image: blogChurchCeremony,
     galleryImages: [
-      "blogChurchCeremony",
-      "brideEditorial",
-      "bouquetDetail"
+      blogChurchCeremony,
+      brideEditorial,
+      bouquetDetail
     ],
     location: "St. Mary's Cathedral & The Cloisters",
     excerpt: "Aju and Taniya's wedding was elegant in the way that only very simple things can be: a church, an antique lace veil, and a family that showed up in full presence to witness a lifelong promise...",
@@ -80,10 +80,10 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Elopements",
     date: "August 2025",
     readTime: "4 min read",
-    image: "heroCouple",
+    image: heroCouple,
     galleryImages: [
-      "heroCouple",
-      "missionCouple"
+      heroCouple,
+      missionCouple
     ],
     location: "Southern Highland Ridge",
     excerpt: "The wind carried the scent of wild mountain thyme. Clara and Julian chose to exchange their vows overlooking a vast alpine valley as the setting sun cast long amber shadows across the hills...",
@@ -103,10 +103,10 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Cross-Cultural",
     date: "July 2025",
     readTime: "6 min read",
-    image: "missionCouple",
+    image: missionCouple,
     galleryImages: [
-      "missionCouple",
-      "portfolioEventReception"
+      missionCouple,
+      portfolioEventReception
     ],
     location: "Cotswold Hills & Heritage Manor",
     excerpt: "Every love story possesses a unique architecture, but for Krishna and Connor, it was a beautiful bridge spanning across cultures and continents, celebrated with laughter under ancient trees...",
@@ -126,10 +126,10 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Events & Dinners",
     date: "June 2025",
     readTime: "3 min read",
-    image: "portfolioEventReception",
+    image: portfolioEventReception,
     galleryImages: [
-      "portfolioEventReception",
-      "bouquetDetail"
+      portfolioEventReception,
+      bouquetDetail
     ],
     location: "Villa Bellafiore, Florence",
     excerpt: "An open-air evening feast celebrating a quarter-century of friendship and heritage. Unrehearsed laughter, candle wax dripping on linen, and glasses raised high under fairy lights...",

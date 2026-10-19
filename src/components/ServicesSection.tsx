@@ -107,7 +107,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
             {/* Top row: 2 side-by-side services */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               
-              {/* Service 2: Events */}
+              {/* Service 2: Premium Photoshoots */}
               <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
               >
                 <img
                   src={SERVICES_DATA[1].image}
-                  alt="Events by Heartful Films"
+                  alt="Premium Photoshoots by Heartful Films"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                   referrerPolicy="no-referrer"
@@ -128,10 +128,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                     02 / Discipline
                   </span>
                   <h3 className="font-editorial text-2xl uppercase text-white font-light tracking-[0.15em] mb-1 drop-shadow-xs">
-                    Events
+                    Premium Photoshoots
                   </h3>
                   <p className="text-white/80 text-xs font-light line-clamp-2 mb-3">
-                    Live celebration videography, candid galas & milestones.
+                    Celebrity, editorial & luxury portrait sessions.
                   </p>
                   <div className="inline-flex items-center gap-1.5 self-start px-3 py-1 rounded-full bg-white/20 group-hover:bg-white/35 backdrop-blur-md border border-white/30 text-white text-[10px] uppercase tracking-[0.2em] font-medium transition-all shadow-xs group-hover:translate-x-1">
                     <span>Explore</span>

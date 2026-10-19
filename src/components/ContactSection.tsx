@@ -455,6 +455,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ initialProjectTy
                       className="w-full px-4 py-3.5 bg-white/70 backdrop-blur-xs rounded-xl border border-[#D8C8B8]/70 text-xs sm:text-sm text-[#292724] focus:outline-none focus:bg-white focus:border-[#8D7163] focus:ring-2 focus:ring-[#8D7163]/15 transition-all shadow-2xs"
                     >
                       <option value="Weddings">Wedding Photography & Films</option>
+                      <option value="Premium Photoshoots">Premium & Celebrity Photoshoots</option>
                       <option value="Events">Event Coverage & Videography</option>
                       <option value="Ads & Brands">Ads & Brand Video Production</option>
                       <option value="Dance Programs">Dance & Stage Program Coverage</option>

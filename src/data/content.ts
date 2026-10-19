@@ -1,10 +1,11 @@
-import brideEditorial from '../assets/images/portfolio/wedding3.webp';
+import brideEditorial from '../assets/images/portfolio/wedding4.webp';
 import portfolioEventReception from '../assets/images/portfolio_event_reception_1792327003671.jpg';
-import servicesCommercial from '../assets/images/services_commercial_brand_1792326982776.jpg';
-import servicesDance from '../assets/images/services_dance_stage_1792326982367.jpg';
+import servicesCommercial from '../assets/images/ads-shoot.webp';
+import servicesDance from '../assets/images/dance.webp';
 import heroCouple from '../assets/images/hero_cinematic_couple_1792326980733.jpg';
 import missionCouple from '../assets/images/mission_couple_intimate_1792327002399.jpg';
 import bouquetDetail from '../assets/images/about_bouquet_detail_1792326982071.jpg';
+import celebrity1 from '../assets/images/portfolio/celebrity1.webp';
 
 export interface ServiceItem {
   id: string;
@@ -39,8 +40,8 @@ export const BRAND_INFO = {
   tagline: "Every story deserves to be felt.",
   instagramUrl: "https://www.instagram.com/_heartful___/",
   instagramHandle: "@_heartful___",
-  phonePlaceholder: "+1 (555) 782-9410",
-  emailPlaceholder: "inquiries@heartfulfilms.com",
+  phonePlaceholder: "+91 96561 06421",
+  emailPlaceholder: "soon",
   locationPlaceholder: "Studio Base & Available for Travel Worldwide",
 };
 
@@ -50,7 +51,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "Weddings",
     subtitle: "Cinematic Wedding Films & Fine Art Photography",
     category: "Weddings",
-    image: "brideEditorial",
+    image: brideEditorial,
     description: "Intimate ceremonies, grand destination weddings, and quiet fleeting glance between vows. We capture the true pulse of your day without stiff posing or intrusive staging.",
     features: [
       "Wedding photography & fine art editorial coverage",
@@ -67,32 +68,32 @@ export const SERVICES_DATA: ServiceItem[] = [
     investmentKicker: "Custom bespoke collections available"
   },
   {
-    id: "events",
-    title: "Events",
-    subtitle: "Live Event Videography & Candid Photography",
-    category: "Events",
-    image: "portfolioEventReception",
-    description: "From milestone anniversaries and cultural galas to intimate private soirees. We document atmosphere, candid interactions, and the energy of shared celebration.",
+    id: "premium-photoshoots",
+    title: "Premium Photoshoots",
+    subtitle: "Celebrity, Editorial & Luxury Portrait Photography",
+    category: "Photoshoots",
+    image: celebrity1,
+    description: "Editorial-grade photoshoots for celebrities, artists, and brands — styled studio and location portraits with cinematic lighting and magazine-ready finishing.",
     features: [
-      "Event photography & ambient atmosphere capture",
-      "Live event videography & dynamic aftermovies",
-      "Celebrations, reunions, and anniversary dinners",
-      "High-energy highlight reels for digital sharing"
+      "Celebrity, influencer & artist portrait sessions",
+      "Editorial, fashion & magazine-style shoots",
+      "Studio and on-location creative direction",
+      "Professional styling, lighting & retouching"
     ],
     deliverables: [
-      "Dynamic 2-4 minute event cinematic film",
-      "Same-week high-resolution photo collection",
-      "Social-ready vertical cutdowns (9:16)",
-      "Full event archival coverage on request"
+      "High-resolution retouched photo gallery",
+      "Curated hero frames for press & social media",
+      "Vertical crops optimized for reels & stories",
+      "Commercial usage licensing on request"
     ],
-    investmentKicker: "Hourly and full-day event rates"
+    investmentKicker: "Half-day and full-day photoshoot packages"
   },
   {
     id: "ads-brands",
     title: "Ads & Brand Films",
     subtitle: "Commercial Video Production & Visual Storytelling",
     category: "Ads & Brands",
-    image: "servicesCommercial",
+    image: servicesCommercial,
     description: "We collaborate with passionate founders, artisans, and premium brands to craft visual narratives that elevate products into emotive brand experiences.",
     features: [
       "Commercial photography for editorial & e-commerce",
@@ -113,7 +114,7 @@ export const SERVICES_DATA: ServiceItem[] = [
     title: "Dance & Stage Programs",
     subtitle: "Performance Coverage & Expressive Stage Cinema",
     category: "Dance Programs",
-    image: "servicesDance",
+    image: servicesDance,
     description: "Movement is pure emotion. We specialize in capturing the rhythm, lighting, costume fluidity, and stage presence of live dance recitals, theatre, and cultural performances.",
     features: [
       "Dance performance coverage & stage cinematography",
@@ -137,7 +138,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
     title: "Clara & Julian — Southern Highlands",
     category: "Weddings",
     type: "video",
-    image: "heroCouple",
+    image: heroCouple,
     year: "2025",
     location: "Highland Valley",
     aspect: "landscape",
@@ -151,7 +152,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
     title: "The Quiet Morning — Heirloom Portraits",
     category: "Weddings",
     type: "photo",
-    image: "brideEditorial",
+    image: brideEditorial,
     year: "2025",
     location: "Provence Manor",
     aspect: "portrait",
@@ -164,7 +165,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
     title: "Embrace in the Wild Grass",
     category: "Weddings",
     type: "photo",
-    image: "missionCouple",
+    image: missionCouple,
     year: "2025",
     location: "Cotswold Hills",
     aspect: "square",
@@ -177,7 +178,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
     title: "Soleil — Contemporary Ballet",
     category: "Dance Programs",
     type: "video",
-    image: "servicesDance",
+    image: servicesDance,
     year: "2025",
     location: "Lyric Theatre",
     aspect: "landscape",
@@ -191,7 +192,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
     title: "The Maker's Craft — Brand Film",
     category: "Ads & Brands",
     type: "video",
-    image: "servicesCommercial",
+    image: servicesCommercial,
     year: "2025",
     location: "Northlight Studios",
     aspect: "landscape",
@@ -205,7 +206,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
     title: "Summer Solstice Gala Dinner",
     category: "Events",
     type: "photo",
-    image: "portfolioEventReception",
+    image: portfolioEventReception,
     year: "2025",
     location: "Villa Bellafiore",
     aspect: "landscape",
@@ -218,7 +219,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
     title: "Hands & Wild Eucalyptus",
     category: "Weddings",
     type: "photo",
-    image: "bouquetDetail",
+    image: bouquetDetail,
     year: "2025",
     location: "Tuscan Estate",
     aspect: "square",
@@ -231,7 +232,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
     title: "The Stage in Motion — Classical Recital",
     category: "Dance Programs",
     type: "photo",
-    image: "servicesDance",
+    image: servicesDance,
     year: "2025",
     location: "National Concert Hall",
     aspect: "landscape",
@@ -244,7 +245,7 @@ export const PORTFOLIO_DATA: PortfolioItem[] = [
     title: "Aura & Form — Creative Direction",
     category: "Ads & Brands",
     type: "photo",
-    image: "servicesCommercial",
+    image: servicesCommercial,
     year: "2025",
     location: "Atelier Studio",
     aspect: "landscape",

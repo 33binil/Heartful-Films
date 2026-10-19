@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Sparkles } from 'lucide-react';
 import bouquetImage from '../assets/images/about_bouquet_detail_1792326982071.jpg';
-import coupleImage from '../assets/images/mission_couple_intimate_1792327002399.jpg';
+import coupleImage from '../assets/images/story.webp';
 
 export const MissionSection: React.FC = () => {
   return (

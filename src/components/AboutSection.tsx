@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { BotanicalFlourish } from './FloralIcons';
-import bouquetImage from '../assets/images/about_bouquet_detail_1792326982071.jpg';
-import brideImage from '../assets/images/about_editorial_bride_1792326982445.jpg';
+import weddingImage from '../assets/images/about-wedding.webp';
+import aboutVideo from '../assets/images/about-video-v1.mp4';
 
 interface AboutSectionProps {
   onLearnMoreClick?: () => void;
@@ -100,11 +100,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMoreClick }) 
               >
                 <div className="relative aspect-square overflow-hidden bg-[#EDE3D8] border border-white/80 rounded-xs group">
                   <img
-                    src={bouquetImage}
-                    alt="Fine art wedding botanical detail and rings"
-                    className="w-full h-full object-cover filter contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-106"
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
+                    src={weddingImage}
+                    alt="Heartful Films logo"
+                    className="w-full h-full object-contain p-6 transition-transform duration-700 ease-out group-hover:scale-106"
                   />
                 </div>
                 {/* Floating Frosted Glass Label */}
@@ -127,12 +125,16 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onLearnMoreClick }) 
                 className="relative z-10 w-64 sm:w-80 md:w-96 shadow-[0_16px_48px_rgba(41,39,36,0.16)] transition-shadow duration-300"
               >
                 <div className="relative aspect-3/4 overflow-hidden bg-[#EDE3D8] border border-white/80 rounded-xs">
-                  <img
-                    src={brideImage}
-                    alt="Editorial bridal portrait with vintage lace dress"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
+                  <video
+                    src={aboutVideo}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    disablePictureInPicture
+                    aria-label="Editorial bridal portrait video"
+                    className="w-full h-full object-cover block"
                   />
 
                   {/* Refined Frosted Glass Bottom Badge with handwritten cursive caption */}
