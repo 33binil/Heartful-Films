@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X, Check, ArrowRight, Camera, Film, Sparkles } from 'lucide-react';
 import { ServiceItem } from '../data/content';
 
@@ -17,6 +17,9 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
   onSelectService,
   onInquireService
 }) => {
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -28,6 +31,16 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
       document.body.style.overflow = 'auto';
     };
   }, [onClose]);
+
+  useEffect(() => {
+    const container = tabsRef.current;
+    const activeTab = tabRefs.current[service.id];
+    if (!container || !activeTab) return;
+    container.scrollTo({
+      left: activeTab.offsetLeft - container.offsetLeft,
+      behavior: 'smooth'
+    });
+  }, [service.id]);
 
   return (
     <div 
@@ -41,18 +54,32 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
         {/* Top bar with glass pill switcher */}
         <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-[#F8F6F1]/90 backdrop-blur-md border-b border-[#D8C8B8]/60">
           {/* Service Switcher Tabs as Translucent Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+          <div ref={tabsRef} className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
             {allServices.map((item) => (
               <button
                 key={item.id}
+                ref={(node) => {
+                  tabRefs.current[item.id] = node;
+                }}
                 onClick={() => onSelectService(item)}
-                className={`text-xs uppercase tracking-[0.2em] px-4 py-1.5 rounded-full transition-all duration-200 whitespace-nowrap font-medium ${
+                className={`inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] px-4 py-1.5 rounded-full transition-all duration-200 whitespace-nowrap font-medium ${
                   service.id === item.id
                     ? 'bg-[#292724] text-white shadow-xs'
                     : 'bg-white/60 text-[#8D7163] hover:text-[#292724] hover:bg-white border border-white/60'
                 }`}
               >
-                {item.title}
+                <span>{item.title}</span>
+                {item.comingSoon && (
+                  <span
+                    className={`text-[8px] tracking-[0.15em] px-1.5 py-0.5 rounded-full ${
+                      service.id === item.id
+                        ? 'bg-white/25 text-white'
+                        : 'bg-[#8D7163]/15 text-[#8D7163]'
+                    }`}
+                  >
+                    Soon
+                  </span>
+                )}
               </button>
             ))}
           </div>
@@ -72,16 +99,36 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
             
             {/* Left Image & Highlight */}
             <div className="md:col-span-5 flex flex-col gap-4">
-              <div className="relative aspect-4/5 overflow-hidden rounded-xl bg-[#EDE3D8] border border-white/80 shadow-md">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute bottom-3 left-3 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] uppercase tracking-widest font-medium">
-                  {service.category}
+              {service.comingSoon ? (
+                <div className="relative aspect-4/5 overflow-hidden rounded-xl bg-gradient-to-br from-[#EDE3D8] to-[#E0D3C4] border border-white/80 shadow-md flex flex-col items-center justify-center text-center px-8">
+                  <div className="flex items-center justify-center w-14 h-14 rounded-full bg-white/70 backdrop-blur-md border border-white/90 shadow-xs mb-4">
+                    <Sparkles className="w-6 h-6 text-[#8D7163]" />
+                  </div>
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-[#8D7163] font-semibold mb-2">
+                    Coming Soon
+                  </span>
+                  <h4 className="font-editorial text-2xl uppercase text-[#292724] font-light tracking-wide mb-2">
+                    {service.title}
+                  </h4>
+                  <p className="text-xs text-[#6B5D52] font-light leading-relaxed max-w-xs">
+                    We're crafting this offering. Full details and pricing will be revealed shortly.
+                  </p>
+                  <div className="absolute bottom-3 left-3 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] uppercase tracking-widest font-medium">
+                    {service.category}
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="relative aspect-4/5 overflow-hidden rounded-xl bg-[#EDE3D8] border border-white/80 shadow-md">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-3 left-3 px-3 py-1 bg-black/60 backdrop-blur-md border border-white/20 text-white rounded-full text-[10px] uppercase tracking-widest font-medium">
+                    {service.category}
+                  </div>
+                </div>
+              )}
 
               <div className="p-4 bg-white/70 backdrop-blur-sm border border-white/80 rounded-xl shadow-xs">
                 <span className="text-[10px] uppercase tracking-[0.25em] text-[#8D7163] font-semibold block mb-1">

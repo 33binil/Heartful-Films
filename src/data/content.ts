@@ -14,11 +14,12 @@ export interface ServiceItem {
   title: string;
   subtitle: string;
   category: string;
-  image: string;
+  image?: string;
   description: string;
   features: string[];
   deliverables: string[];
   investmentKicker: string;
+  comingSoon?: boolean;
 }
 
 export interface PortfolioItem {
@@ -44,7 +45,7 @@ export const BRAND_INFO = {
   instagramHandle: "@_heartful___",
   phonePlaceholder: "+91 96561 06421",
   emailPlaceholder: "soon",
-  locationPlaceholder: "Studio Base & Available for Travel Worldwide",
+  locationPlaceholder: "Kachani, Karakulam P. O, Trivandrum",
 };
 
 export const SERVICES_DATA: ServiceItem[] = [
@@ -131,6 +132,90 @@ export const SERVICES_DATA: ServiceItem[] = [
       "Artist and troupe promotional media kit"
     ],
     investmentKicker: "School, academy, and individual artist packages"
+  },
+  {
+    id: "digital-marketing-content",
+    title: "Digital Marketing Content",
+    subtitle: "Social-First Content & Campaign Creative",
+    category: "Digital Marketing",
+    description: "Scroll-stopping social content built for modern brands. We plan and produce short-form reels, product films, and campaign creatives designed to grow reach, engagement, and conversions.",
+    features: [
+      "Short-form reels & vertical video for Instagram, YouTube & Facebook",
+      "Product, lifestyle and founder-led brand content",
+      "Monthly content calendars with creative direction",
+      "Ad creatives, thumbnails & performance marketing assets"
+    ],
+    deliverables: [
+      "Batch of edited short-form reels (per package)",
+      "Curated social photo set ready to post",
+      "Platform-optimized crops, captions & thumbnail frames",
+      "Content scheduling and campaign rollout support"
+    ],
+    investmentKicker: "Monthly retainers & campaign packages",
+    comingSoon: true
+  },
+  {
+    id: "interior-shoot",
+    title: "Interior Shoot",
+    subtitle: "Architectural & Interior Space Photography",
+    category: "Interiors",
+    description: "Clean, architectural photography that makes spaces feel as good on screen as they do in person. Ideal for homes, resorts, cafés, showrooms, and real-estate listings.",
+    features: [
+      "Residential, hospitality & commercial interior coverage",
+      "Wide architectural composition and detail framing",
+      "Natural and mixed-light balance with careful styling",
+      "Optional walkthrough video and aerial exteriors"
+    ],
+    deliverables: [
+      "High-resolution edited photo gallery",
+      "Wide, square and vertical crops for listings & social",
+      "Detail shots of materials, textures and finishes",
+      "Commercial usage licensing on request"
+    ],
+    investmentKicker: "Per-space and full-property packages",
+    comingSoon: true
+  },
+  {
+    id: "baby-shoot",
+    title: "Baby Shoot",
+    subtitle: "Newborn, Toddler & Family Portraits",
+    category: "Baby & Family",
+    description: "Gentle, patient sessions that preserve the earliest chapters of your family's story — from tiny newborn details to playful toddler milestones, captured in studio or at home.",
+    features: [
+      "Newborn, milestone, cake-smash & toddler sessions",
+      "Studio setups with props and soft, safe lighting",
+      "At-home lifestyle sessions for relaxed family frames",
+      "Parent, sibling and candid family group portraits"
+    ],
+    deliverables: [
+      "Softly retouched high-resolution gallery",
+      "Curated thank-you, announcement & announcement cards",
+      "Custom photo album and print-ready files",
+      "Sneak peek selection within 48 hours"
+    ],
+    investmentKicker: "Studio and at-home session packages",
+    comingSoon: true
+  },
+  {
+    id: "corporate",
+    title: "Corporate",
+    subtitle: "Corporate Films, Headshots & Event Coverage",
+    category: "Corporate",
+    description: "Polished corporate storytelling for teams and companies — from leadership headshots and culture films to conferences, launches, and internal events, delivered with a professional finish.",
+    features: [
+      "Corporate brand and culture films",
+      "Professional team & leadership headshots",
+      "Conference, launch and event coverage",
+      "Interview, testimonial and product explainer videos"
+    ],
+    deliverables: [
+      "Edited corporate brand or highlight film",
+      "Consistent headshot library for web & LinkedIn",
+      "Event photo and video highlight package",
+      "Commercial usage licensing on request"
+    ],
+    investmentKicker: "Custom corporate retainers & project quotes",
+    comingSoon: true
   }
 ];
 
