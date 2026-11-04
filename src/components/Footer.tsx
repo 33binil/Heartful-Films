@@ -1,13 +1,45 @@
-import React from 'react';
-import { Instagram, ArrowUp, Mail, Phone, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
+import { Instagram, ArrowUp, Mail, Phone, MapPin, Lock, ShieldCheck, X, AlertCircle } from 'lucide-react';
 import { BRAND_INFO } from '../data/content';
 import logoImage from '../assets/images/logo.jpg';
 
 interface FooterProps {
   onNavigate?: (page: 'home' | 'blog', sectionId?: string) => void;
+  onLockWebsite?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onLockWebsite }) => {
+  const [showAdminLockModal, setShowAdminLockModal] = useState(false);
+  const [adminPasskey, setAdminPasskey] = useState('');
+  const [adminError, setAdminError] = useState('');
+  const [isLocking, setIsLocking] = useState(false);
+
+  const handleAdminLock = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const validPasskeys = ['heartful@admin2026', 'admin2026', 'heartful'];
+    if (!validPasskeys.includes(adminPasskey.trim())) {
+      setAdminError('Invalid security passkey.');
+      return;
+    }
+
+    setIsLocking(true);
+    try {
+      await fetch('/api/payment-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ locked: true }),
+      }).catch(() => {});
+      localStorage.setItem('heartful_payment_locked', 'true');
+      setShowAdminLockModal(false);
+      if (onLockWebsite) {
+        onLockWebsite();
+      } else {
+        window.location.reload();
+      }
+    } finally {
+      setIsLocking(false);
+    }
+  };
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -172,6 +204,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
 
           <div className="flex items-center gap-6">
+            <button
+              type="button"
+              onClick={() => {
+                setShowAdminLockModal(true);
+                setAdminError('');
+                setAdminPasskey('');
+              }}
+              className="inline-flex items-center gap-1.5 opacity-40 hover:opacity-100 hover:text-[#C5A880] transition-all cursor-pointer text-[10px] tracking-widest uppercase"
+              title="Admin Payment Restriction Controls"
+            >
+              <Lock className="w-3 h-3" />
+              <span>Admin Lock</span>
+            </button>
             <a 
               href={BRAND_INFO.instagramUrl} 
               target="_blank" 
@@ -184,6 +229,93 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
 
       </div>
+
+      {/* Admin Lock Confirmation Modal */}
+      {showAdminLockModal && (
+        <div 
+          className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+          onClick={() => setShowAdminLockModal(false)}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-md bg-[#161514] border border-[#3E3934] rounded-2xl p-6 sm:p-7 shadow-2xl text-left text-[#F8F6F1]"
+          >
+            <button
+              type="button"
+              onClick={() => setShowAdminLockModal(false)}
+              className="absolute top-4 right-4 p-1.5 text-[#8F877E] hover:text-white transition-colors rounded-lg cursor-pointer"
+              aria-label="Close dialog"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-9 h-9 rounded-full bg-rose-500/15 border border-rose-500/30 flex items-center justify-center text-rose-400">
+                <Lock className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="font-editorial text-xl text-[#F8F6F1]">Lock Website</h3>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-[#8F877E]">
+                  Payment Restriction Control
+                </p>
+              </div>
+            </div>
+
+            <p className="text-xs text-[#A89F95] mb-4 leading-relaxed">
+              Enter your security passkey to re-enable the <strong>Payment Pending</strong> full-screen overlay for all visitors.
+            </p>
+
+            <form onSubmit={handleAdminLock} className="space-y-4">
+              <div>
+                <label className="block text-[11px] uppercase tracking-[0.15em] text-[#7A736B] mb-1.5">
+                  Security Passkey
+                </label>
+                <input
+                  type="password"
+                  value={adminPasskey}
+                  onChange={(e) => {
+                    setAdminPasskey(e.target.value);
+                    if (adminError) setAdminError('');
+                  }}
+                  placeholder="Enter passkey..."
+                  autoFocus
+                  className="w-full bg-[#0E0D0C] border border-[#3E3934] focus:border-[#C5A880] rounded-xl px-4 py-2.5 text-sm text-[#F8F6F1] outline-none transition-colors"
+                />
+                {adminError && (
+                  <p className="mt-1.5 text-xs text-rose-400 flex items-center gap-1">
+                    <AlertCircle className="w-3.5 h-3.5" />
+                    <span>{adminError}</span>
+                  </p>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2 pt-2">
+                <button
+                  type="submit"
+                  disabled={isLocking || !adminPasskey.trim()}
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 disabled:opacity-50 text-white text-xs uppercase tracking-[0.18em] font-medium transition-all cursor-pointer shadow-md"
+                >
+                  {isLocking ? (
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      <Lock className="w-3.5 h-3.5" />
+                      <span>Activate Payment Lock</span>
+                    </>
+                  )}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowAdminLockModal(false)}
+                  className="px-4 py-2.5 rounded-xl bg-[#23201D] hover:bg-[#2F2B27] text-[#C8BFB5] text-xs uppercase tracking-[0.15em] font-medium transition-colors cursor-pointer"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };

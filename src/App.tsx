@@ -10,6 +10,7 @@ import { AnnouncementBar } from './components/AnnouncementBar';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { LoadingScreen } from './components/LoadingScreen';
+import { PaymentPendingOverlay } from './components/PaymentPendingOverlay';
 
 const IntroSection = lazy(() => import('./components/IntroSection').then((m) => ({ default: m.IntroSection })));
 const AboutSection = lazy(() => import('./components/AboutSection').then((m) => ({ default: m.AboutSection })));
@@ -31,6 +32,11 @@ export default function App() {
   const [selectedProjectType, setSelectedProjectType] = useState<string>('Weddings');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPaymentLocked, setIsPaymentLocked] = useState<boolean>(() => {
+    // Fast initial check from local cache to prevent flash
+    const cached = typeof window !== 'undefined' ? localStorage.getItem('heartful_payment_locked') : null;
+    return cached !== null ? cached === 'true' : true;
+  });
 
   // Smooth scroll reading indicator at the very top
   const { scrollYProgress } = useScroll();
@@ -39,6 +45,48 @@ export default function App() {
     damping: 30,
     restDelta: 0.001
   });
+
+  // Synchronize payment restriction status from backend and support admin URL params
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const adminParam = params.get('admin');
+
+    if (adminParam === 'unlock') {
+      setIsPaymentLocked(false);
+      localStorage.setItem('heartful_payment_locked', 'false');
+      fetch('/api/payment-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ locked: false }),
+      }).catch(() => {});
+      return;
+    } else if (adminParam === 'lock') {
+      setIsPaymentLocked(true);
+      localStorage.setItem('heartful_payment_locked', 'true');
+      fetch('/api/payment-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ locked: true }),
+      }).catch(() => {});
+      return;
+    }
+
+    // Query backend persistent storage
+    fetch('/api/payment-status')
+      .then((res) => {
+        if (!res.ok) throw new Error('API request failed');
+        return res.json();
+      })
+      .then((data) => {
+        if (typeof data.locked === 'boolean') {
+          setIsPaymentLocked(data.locked);
+          localStorage.setItem('heartful_payment_locked', String(data.locked));
+        }
+      })
+      .catch((err) => {
+        console.warn('Persistent status fetch fallback to cached state:', err);
+      });
+  }, []);
 
   // Ensure page always starts at top on refresh/reload; cleanup restore
   useEffect(() => {
@@ -80,15 +128,15 @@ export default function App() {
     return () => window.clearTimeout(timer);
   }, []);
 
-  // Lock page scroll while the loading screen is visible
+  // Lock page scroll while the loading screen or payment pending overlay is visible
   useEffect(() => {
-    if (!isLoading) return;
+    if (!isLoading && !isPaymentLocked) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = previous;
     };
-  }, [isLoading]);
+  }, [isLoading, isPaymentLocked]);
 
   const navigateTo = (page: 'home' | 'blog', sectionId?: string) => {
     if (page === 'blog') {
@@ -146,6 +194,19 @@ export default function App() {
     <div className="min-h-screen bg-[#F8F6F1] text-[#292724] font-sans flex flex-col selection:bg-[#D8C8B8] selection:text-[#292724] relative">
       <AnimatePresence>
         {isLoading && <LoadingScreen key="loading-screen" />}
+        {!isLoading && isPaymentLocked && (
+          <PaymentPendingOverlay
+            key="payment-pending-overlay"
+            onUnlock={() => {
+              setIsPaymentLocked(false);
+              localStorage.setItem('heartful_payment_locked', 'false');
+            }}
+            onRelock={() => {
+              setIsPaymentLocked(true);
+              localStorage.setItem('heartful_payment_locked', 'true');
+            }}
+          />
+        )}
       </AnimatePresence>
 
       {/* Editorial Scroll Progress Bar */}
@@ -248,7 +309,10 @@ export default function App() {
 
       {/* Footer */}
       <Suspense fallback={<SectionFallback />}>
-        <Footer onNavigate={navigateTo} />
+        <Footer 
+          onNavigate={navigateTo} 
+          onLockWebsite={() => setIsPaymentLocked(true)}
+        />
       </Suspense>
 
       {/* Floating Animated Back to Top Glass Pill */}
